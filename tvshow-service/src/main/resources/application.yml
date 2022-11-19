@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: tvshow-service
+
+server:
+  port: 8083

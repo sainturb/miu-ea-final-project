@@ -1,0 +1,17 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: config-service
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/sainturb/miu-ea-config-files
+          default-label: main
+          skip-ssl-validation: true
+
+  zipkin:
+    base-url: http://${ZIPKIN_SERVER}:9411

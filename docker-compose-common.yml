@@ -1,0 +1,13 @@
+version: '3'
+services:
+  common:
+    networks:
+      - all
+    environment:
+      DISCOVERY_SERVER: discovery
+      ZIPKIN_SERVER: zipkin
+      CONFIG_SERVER: config
+      MOVIE_SERVICE: movie-service
+      TVSHOW_SERVICE: tvshow-service
+      COMMENT_SERVICE: comment-service
+      RATING_SERVICE: rating-service
