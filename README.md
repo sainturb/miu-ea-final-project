@@ -1,3 +1,6 @@
+## Architecture image:
+
+![alt text](assignment.drawio.png)
 
 ## Movie Rating Portal
  
