@@ -1,15 +1,26 @@
 package miu.edu.service;
 
+import lombok.RequiredArgsConstructor;
+import miu.edu.dto.UserDTO;
+import org.keycloak.admin.client.CreatedResponseUtil;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.KeycloakBuilder;
+import org.keycloak.admin.client.resource.UserResource;
+import org.keycloak.admin.client.resource.UsersResource;
+import org.keycloak.representations.idm.CredentialRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class KeycloakService {
+
+    private final ModelMapper mapper;
     @Value("${keycloak.auth-server-url}")
     String url;
     @Value("${keycloak.realm}")
@@ -25,8 +36,17 @@ public class KeycloakService {
         return KeycloakBuilder.builder()
                 .grantType(type)
                 .clientId(clientId)
-                .clientId(clientId)
                 .clientSecret(clientSecret)
+                .serverUrl(url)
+                .realm(realm)
+                .build();
+    }
+
+    Keycloak getAdminInstance() {
+        return KeycloakBuilder.builder()
+                .grantType(type)
+                .clientId("admin-cli")
+                .clientSecret("2ff34f83-11d1-4fc4-b20f-d3491f9df3e4")
                 .serverUrl(url)
                 .realm(realm)
                 .build();
@@ -40,5 +60,29 @@ public class KeycloakService {
     public UserRepresentation getUser(String id) {
         Keycloak keycloak = getInstance();
         return keycloak.realm(realm).users().get(id).toRepresentation();
+    }
+
+    public void addUser(UserDTO user) {
+        try {
+            UserRepresentation userRepresentation = mapper.map(user, UserRepresentation.class);
+            userRepresentation.setEnabled(true);
+            userRepresentation.setId(null);
+            Keycloak keycloak = getAdminInstance();
+            UsersResource usersResource = keycloak.realm(realm).users();
+            Response response = usersResource.create(userRepresentation);
+
+            String userId = CreatedResponseUtil.getCreatedId(response);
+
+            // Define password credential
+            CredentialRepresentation passwordCredential = new CredentialRepresentation();
+            passwordCredential.setTemporary(false);
+            passwordCredential.setType(CredentialRepresentation.PASSWORD);
+            passwordCredential.setValue(user.getUsername());
+
+            UserResource userResource = usersResource.get(userId);
+            userResource.resetPassword(passwordCredential);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
