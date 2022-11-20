@@ -1,0 +1,55 @@
+{
+	"info": {
+		"_postman_id": "9705acc9-a339-497c-88ab-f53f447a9603",
+		"name": "CS544 - User service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get users",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"password": "user1",
+						"username": "user1",
+						"clientSecret": "bbc02d7c-d18e-4fb7-8882-23165e849810",
+						"clientId": "web-app",
+						"grant_type": "password_credentials",
+						"scope": "",
+						"accessTokenUrl": "http://localhost:8080/auth/realms/spring-realm/protocol/openid-connect/token",
+						"tokenName": "token",
+						"addTokenTo": "header"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8081/api/users"
+			},
+			"response": []
+		},
+		{
+			"name": "get user",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"password": "user1",
+						"username": "user1",
+						"clientSecret": "bbc02d7c-d18e-4fb7-8882-23165e849810",
+						"clientId": "web-app",
+						"grant_type": "password_credentials",
+						"scope": "",
+						"accessTokenUrl": "http://localhost:8080/auth/realms/spring-realm/protocol/openid-connect/token",
+						"tokenName": "token",
+						"addTokenTo": "header"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8081/api/users/e0d4cc4d-97aa-417f-8a57-9efbf844e45c"
+			},
+			"response": []
+		}
+	]
+}
