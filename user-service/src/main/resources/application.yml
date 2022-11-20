@@ -1,6 +1,20 @@
 spring:
   application:
     name: user-service
+  zipkin:
+    base-url: http://localhost:9411
 
 server:
   port: 8081
+
+keycloak:
+  enabled: true
+  realm: spring-realm
+  auth-server-url: http://localhost:8080/auth
+  public-client: true
+  bearer-only: true
+  credentials:
+    secret: bbc02d7c-d18e-4fb7-8882-23165e849810
+  ssl-required: none
+  resource: web-app
+  use-resource-role-mappings: true
