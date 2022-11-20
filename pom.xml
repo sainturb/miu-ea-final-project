@@ -12,6 +12,7 @@
 		<module>tvshow-service</module>
 		<module>comment-service</module>
 		<module>rating-service</module>
+		<module>common-service</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
