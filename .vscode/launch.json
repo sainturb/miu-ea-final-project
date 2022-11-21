@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TvshowApplication<tvshow-services>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "miu.edu.TvshowApplication",
+            "projectName": "tvshow-services",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

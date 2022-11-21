@@ -1,12 +1,12 @@
 server:
-  port: 8082
+  port: 8086
 spring:
   application:
-    name: movie-service
+    name: motion-pictures-service
   # Database
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:55000/movie-service
+    url: jdbc:postgresql://localhost:55001/motion-pictures
     username: postgres
     password: postgrespw
   # JPA properties
@@ -33,3 +33,4 @@ management:
   endpoint:
     health:
       show-details: always
+

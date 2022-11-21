@@ -1,6 +1,35 @@
+server:
+  port: 8083
 spring:
   application:
     name: tvshow-service
-
-server:
-  port: 8083
+  # Database
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:55001/tvshow-service
+    username: postgres
+    password: postgrespw
+  # JPA properties
+  jpa:
+    properties:      
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+    show-sql: true    
+    database: postgresql
+    # database-platform: org.hibernate.dialect.PostgreSQLDialect
+    # open-in-view: false
+    # generate-ddl: true
+  sql:
+    init:
+      mode: always
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
