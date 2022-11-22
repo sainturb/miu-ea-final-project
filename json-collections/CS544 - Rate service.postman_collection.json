@@ -1,0 +1,30 @@
+{
+	"info": {
+		"_postman_id": "9705acc9-a339-497c-88ab-f53f447a9603",
+		"name": "CS544 - Rate service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "save rating",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"motionPictureId\": 1,\n    \"motionPictureType\": \"MOVIE\",\n    \"userId\": 1,\n    \"rating\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8085/ratings"
+			},
+			"response": []
+		}
+	]
+}
