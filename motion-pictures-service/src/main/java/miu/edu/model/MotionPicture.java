@@ -46,4 +46,5 @@ public abstract class MotionPicture {
     private double duration;
 
     private int numberOfComments;
+    private double averageRating;
 }

@@ -3,7 +3,10 @@ package miu.edu.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -66,6 +69,14 @@ public class MovieServiceImpl implements MovieService {
             foundMovie.setNumberOfComments(payload.getNumberOfComments());
             // movieRepo.save(foundMovie);
         }
+    }
+
+    @Override
+    @KafkaListener(topics = "movie", containerFactory = "kafkaRatingListenerStringContainerFactory", groupId = "movie")
+    @Transactional
+    public void listenForRatingService(ConsumerRecord<String, String> cr, @Payload String message) {
+        // TODO persist average rating
+        System.out.println(message);
     }
 
 }
