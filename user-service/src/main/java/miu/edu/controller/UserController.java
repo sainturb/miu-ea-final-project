@@ -37,8 +37,12 @@ public class UserController {
 
     @PostConstruct
     public void run() {
-        keycloakService.addUser(new UserDTO(null, "user1", "user1 f", "user1 l", "user1@mail.com"));
-        keycloakService.addUser(new UserDTO(null, "user2", "user2 f", "user2 l", "user2@mail.com"));
-        keycloakService.addUser(new UserDTO(null, "user3", "user3 f", "user3 l", "user3@mail.com"));
+        keycloakService.addUser(new UserDTO(null, "user1", "user1 f", "user1 l", "user1@mail.com", "USER"));
+        keycloakService.addUser(new UserDTO(null, "user2", "user2 f", "user2 l", "user2@mail.com", "USER"));
+        keycloakService.addUser(new UserDTO(null, "user3", "user3 f", "user3 l", "user3@mail.com", "USER"));
+
+        keycloakService.addUser(new UserDTO(null, "owner1", "owner1 f", "owner1 l", "owner1@mail.com", "OWNER"));
+        keycloakService.addUser(new UserDTO(null, "owner2", "owner2 f", "owner2 l", "owner2@mail.com", "OWNER"));
+        keycloakService.addUser(new UserDTO(null, "owner3", "owner3 f", "owner3 l", "owner3@mail.com", "OWNER"));
     }
 }

@@ -5,15 +5,20 @@ import miu.edu.dto.UserDTO;
 import org.keycloak.admin.client.CreatedResponseUtil;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.KeycloakBuilder;
+import org.keycloak.admin.client.resource.RealmResource;
 import org.keycloak.admin.client.resource.UserResource;
 import org.keycloak.admin.client.resource.UsersResource;
+import org.keycloak.representations.idm.ClientRepresentation;
 import org.keycloak.representations.idm.CredentialRepresentation;
+import org.keycloak.representations.idm.RoleRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.core.Response;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -68,9 +73,9 @@ public class KeycloakService {
             userRepresentation.setEnabled(true);
             userRepresentation.setId(null);
             Keycloak keycloak = getAdminInstance();
-            UsersResource usersResource = keycloak.realm(realm).users();
+            RealmResource realmResource = keycloak.realm(realm);
+            UsersResource usersResource = realmResource.users();
             Response response = usersResource.create(userRepresentation);
-
             String userId = CreatedResponseUtil.getCreatedId(response);
 
             // Define password credential
@@ -81,6 +86,11 @@ public class KeycloakService {
 
             UserResource userResource = usersResource.get(userId);
             userResource.resetPassword(passwordCredential);
+
+            ClientRepresentation webApp = realmResource.clients().findByClientId("web-app").get(0);
+
+            RoleRepresentation roleToAdd = realmResource.roles().get(user.getRole()).toRepresentation();
+            userResource.roles().clientLevel(webApp.getId()).add(Collections.singletonList(roleToAdd));
         } catch (Exception e) {
             e.printStackTrace();
         }

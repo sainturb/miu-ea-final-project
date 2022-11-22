@@ -91,6 +91,8 @@ services:
       POSTGRES_PASSWORD: postgres
   rating-db:
     image: postgres
+    ports:
+      - 5432:5432
     extends:
       file: docker-compose-common.yml
       service: common
@@ -149,6 +151,8 @@ services:
       - 5673:15672
   kafka:
     image: confluentinc/cp-kafka:5.5.8
+    ports:
+      - 9092:9092
     extends:
       file: docker-compose-common.yml
       service: common

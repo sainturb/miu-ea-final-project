@@ -1,11 +1,38 @@
 spring:
   application:
     name: rating-service
-
-    datasource:
-      url: jdbc:postgresql://localhost:5432/postgres
-      username: postgres
-      password: Manduul5725
-
+  datasource:
+    url: jdbc:postgresql://${DATABASE_HOST:localhost}:5432/postgres
+    username: postgres
+    password: postgres
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        show_sql: true
+    hibernate:
+      ddl-auto: create
+    defer-datasource-initialization: true
+    sql:
+      init:
+        mode: always
+  zipkin:
+    base-url: http://${ZIPKIN_SERVER:localhost}:9411
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVERS:localhost:9092}
+    consumer:
+      group-id: group-1
+      auto-offset-reset: latest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      enable-auto-commit: false
+    producer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${DISCOVERY_SERVER:localhost}:8761/eureka/
 server:
   port: 8085

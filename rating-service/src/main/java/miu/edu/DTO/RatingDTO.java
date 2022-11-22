@@ -15,6 +15,6 @@ public class RatingDTO {
 
     private Long motionPictureId;
     private int totalNumberOfRating;
-    private Long avgRating;
+    private Double avgRating;
 
 }

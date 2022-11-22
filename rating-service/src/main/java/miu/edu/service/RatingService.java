@@ -8,13 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 public interface RatingService {
-
      List<Rating> findAll();
      Rating saveRating(Rating rating);
-     Rating updateRating(int id, Rating rating);
-     void deleteRating(int id);
-     Rating findRatingById(int id);
-
-     List<Rating> findRatingByMovieId(int id);
-    List<Rating> findRatingByTvshowId(int id);
+     Rating updateRating(Long id, Rating rating);
+     void deleteRating(Long id);
+     Rating findRatingById(Long id);
 }

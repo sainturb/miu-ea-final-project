@@ -9,11 +9,10 @@ import javax.persistence.*;
 public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private Long motionPictureId;
-    private Long userId;
-    private int rating;
-    private Long avgRating;
+    private Long userId; // -> String
+    private Double rating;
 
     @Enumerated(EnumType.STRING)
     private MotionPictureType motionPictureType;
