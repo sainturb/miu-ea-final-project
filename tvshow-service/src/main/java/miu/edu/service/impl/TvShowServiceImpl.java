@@ -73,7 +73,7 @@ public class TvShowServiceImpl implements TvShowService {
     }
 
     @Override
-    @KafkaListener(topics = "tvshow", containerFactory = "kafkaRatingListenerStringContainerFactory", groupId = "tvshow")
+    @KafkaListener(topics = "TVSHOW", containerFactory = "kafkaRatingListenerStringContainerFactory", groupId = "tvshow")
     @Transactional
     public void listenForRatingService(ConsumerRecord<String, String> cr, @Payload String message) {
         // TODO persist average rating

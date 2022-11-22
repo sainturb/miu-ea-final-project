@@ -76,16 +76,19 @@ services:
       file: docker-compose-base.yml
       service: rabbitmq
   kafka:
+    platform: linux/amd64
     extends:
       file: docker-compose-base.yml
       service: kafka
     depends_on:
       - zookeeper
   zookeeper:
+    platform: linux/amd64
     extends:
       file: docker-compose-base.yml
       service: zookeeper
   kafka-ui:
+    platform: linux/amd64
     extends:
       file: docker-compose-base.yml
       service: kafka-ui

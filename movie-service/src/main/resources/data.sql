@@ -101,7 +101,7 @@ VALUES (
         'movie',
         127,
         'Hereditary',
-        7.3,
+        7.0,
         2018,
         1,
         0,
