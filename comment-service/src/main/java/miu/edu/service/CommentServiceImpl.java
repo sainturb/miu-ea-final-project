@@ -1,6 +1,7 @@
 package miu.edu.service;
 
 import lombok.RequiredArgsConstructor;
+import miu.edu.dto.MessageToMotionPicturesDTO;
 import miu.edu.model.Comment;
 import miu.edu.model.MotionPictureType;
 import miu.edu.repository.CommentRepository;
@@ -34,14 +35,14 @@ public class CommentServiceImpl implements CommentService {
         try {
             Comment savedComment = commentRepository.save(comment);
 
-            //send a message
+            // send a message
             String routingKey = savedComment.getMotionPictureType().toString();
             Long motionPictureId = savedComment.getMotionPictureId();
             sendMessageToMotionPicture(routingKey, motionPictureId);
 
             return savedComment;
-        } catch (RuntimeException e){
-            //TODO save error log
+        } catch (RuntimeException e) {
+            // TODO save error log
             System.out.println(e.getMessage());
             return null;
         }
@@ -60,8 +61,8 @@ public class CommentServiceImpl implements CommentService {
 
         commentRepository.deleteById(id);
 
-        //send a message
-        if (routingKey != null){
+        // send a message
+        if (routingKey != null) {
             sendMessageToMotionPicture(routingKey, motionPictureId);
         }
     }
@@ -78,14 +79,14 @@ public class CommentServiceImpl implements CommentService {
                 .map(Comment::getMotionPictureId)
                 .orElse(null);
 
-        Comment savedComment =  commentRepository.save(comment);
+        Comment savedComment = commentRepository.save(comment);
 
-        //send a message
+        // send a message
         String routingKey = savedComment.getMotionPictureType().toString();
         Long motionPictureId = savedComment.getMotionPictureId();
 
-        if ( (routingKeyBefore != null && !routingKeyBefore.equals(routingKey))
-                || (motionPictureIdBefore != null && !motionPictureIdBefore.equals(motionPictureId))){
+        if ((routingKeyBefore != null && !routingKeyBefore.equals(routingKey))
+                || (motionPictureIdBefore != null && !motionPictureIdBefore.equals(motionPictureId))) {
             sendMessageToMotionPicture(routingKeyBefore, motionPictureIdBefore);
         }
 
@@ -96,22 +97,36 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<Comment> getCommentsByMoviesId(Long motionPicId) {
-        return commentRepository.findAllByMotionPictureTypeEqualsAndMotionPictureIdEquals(MotionPictureType.MOVIE, motionPicId);
+        return commentRepository.findAllByMotionPictureTypeEqualsAndMotionPictureIdEquals(MotionPictureType.MOVIE,
+                motionPicId);
     }
 
     @Override
     public List<Comment> getCommentsByTvshowId(Long motionPicId) {
-        return commentRepository.findAllByMotionPictureTypeEqualsAndMotionPictureIdEquals(MotionPictureType.TVSHOW, motionPicId);
+        return commentRepository.findAllByMotionPictureTypeEqualsAndMotionPictureIdEquals(MotionPictureType.TVSHOW,
+                motionPicId);
     }
 
     @Override
-    public void sendMessageToMotionPicture(String routingKey, Long motionPictureId){
+    public void sendMessageToMotionPicture(String routingKey, Long motionPictureId) {
         try {
             Integer numberOfComments = commentRepository.getCommentCountByMotionPictureId(motionPictureId);
             rabbitTemplate.setExchange("motionPictureDirectExchange");
-            rabbitTemplate.convertAndSend(routingKey, numberOfComments.toString());
-        } catch (AmqpException amqpException){
-            //TODO save error log
+
+            MessageToMotionPicturesDTO messageDTO = new MessageToMotionPicturesDTO(numberOfComments, motionPictureId);
+            rabbitTemplate.convertAndSend(routingKey, messageDTO);
+
+            // StringBuilder messageBuilder = new StringBuilder();
+            // messageBuilder.append("numberOfComments:");
+            // messageBuilder.append(numberOfComments.toString());
+            // messageBuilder.append(",");
+
+            // messageBuilder.append("motionPictureId:");
+            // messageBuilder.append(motionPictureId.toString());
+
+            // rabbitTemplate.convertAndSend(routingKey, messageBuilder.toString());
+        } catch (AmqpException amqpException) {
+            // TODO save error log
             System.out.println(amqpException.getMessage());
         }
     }

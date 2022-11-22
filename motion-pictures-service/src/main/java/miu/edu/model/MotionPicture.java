@@ -25,7 +25,7 @@ import lombok.Data;
 public abstract class MotionPicture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String name;
     private int releasedYear;
@@ -44,4 +44,6 @@ public abstract class MotionPicture {
     private List<CharacterOfMotionPicture> characters;
 
     private double duration;
+
+    private int numberOfComments;
 }

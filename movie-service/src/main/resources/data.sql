@@ -93,7 +93,8 @@ INSERT INTO
         name,
         rating,
         released_year,
-        director_id
+        director_id,
+        number_of_comments
     )
 VALUES (
         'movie',
@@ -101,7 +102,8 @@ VALUES (
         'Hereditary',
         7.3,
         2018,
-        1
+        1,
+        0
     );
 
 INSERT INTO
@@ -111,7 +113,8 @@ INSERT INTO
         name,
         rating,
         released_year,
-        director_id
+        director_id,
+        number_of_comments
     )
 VALUES (
         'movie',
@@ -119,7 +122,8 @@ VALUES (
         'Black Panther: Wakanda Forever',
         7.3,
         2022,
-        2
+        2,
+        0
     );
 
 -- #GENRES

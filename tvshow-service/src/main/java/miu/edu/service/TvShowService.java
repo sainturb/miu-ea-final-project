@@ -2,6 +2,7 @@ package miu.edu.service;
 
 import java.util.List;
 
+import miu.edu.dto.MessageToMotionPicturesDTO;
 import miu.edu.model.TvShow;
 
 public interface TvShowService {
@@ -14,4 +15,6 @@ public interface TvShowService {
     boolean removeTvShow(long id);
 
     TvShow updateTvShow(long id, TvShow TvShow);
+
+    void listenForCommentService(MessageToMotionPicturesDTO payload);
 }

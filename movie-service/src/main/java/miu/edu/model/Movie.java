@@ -11,5 +11,5 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 @DiscriminatorValue("movie")
 public class Movie extends MotionPicture {
-
+    
 }

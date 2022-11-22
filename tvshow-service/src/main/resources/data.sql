@@ -94,6 +94,7 @@ INSERT INTO
         rating,
         released_year,
         director_id,
+        number_of_comments,
         number_of_seasons
     )
 VALUES (
@@ -103,6 +104,7 @@ VALUES (
         9.2,
         2011,
         2,
+        0,
         8
     );
 
@@ -114,6 +116,7 @@ INSERT INTO
         rating,
         released_year,
         director_id,
+        number_of_comments,
         number_of_seasons
     )
 VALUES (
@@ -123,6 +126,7 @@ VALUES (
         9.5,
         2008,
         1,
+        0,
         5
     );
 

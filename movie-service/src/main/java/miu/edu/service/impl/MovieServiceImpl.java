@@ -3,9 +3,12 @@ package miu.edu.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
+import miu.edu.dto.MessageToMotionPicturesDTO;
 import miu.edu.model.Movie;
 import miu.edu.repository.MovieRepo;
 import miu.edu.service.MovieService;
@@ -49,6 +52,20 @@ public class MovieServiceImpl implements MovieService {
         Movie.setId(id);
         Movie savedMovie = movieRepo.save(Movie);
         return savedMovie;
+    }
+
+    @Override
+    @RabbitListener(queues = { "movieQueue" })
+    @Transactional
+    public void listenForCommentService(MessageToMotionPicturesDTO payload) {
+        if (payload == null)
+            return;
+
+        if (payload.getMotionPictureId() != null) {
+            Movie foundMovie = movieRepo.findById(payload.getMotionPictureId()).orElse(null);
+            foundMovie.setNumberOfComments(payload.getNumberOfComments());
+            // movieRepo.save(foundMovie);
+        }
     }
 
 }

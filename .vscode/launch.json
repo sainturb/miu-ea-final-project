@@ -9,6 +9,27 @@
             "projectName": "tvshow-services",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CommentApplication<comment-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "miu.edu.CommentApplication",
+            "projectName": "comment-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=60166 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=comment-service"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MovieApplication<movie-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "miu.edu.MovieApplication",
+            "projectName": "movie-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
