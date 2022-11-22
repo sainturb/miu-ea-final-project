@@ -2,5 +2,10 @@ spring:
   application:
     name: rating-service
 
+    datasource:
+      url: jdbc:postgresql://localhost:5432/postgres
+      username: postgres
+      password: Manduul5725
+
 server:
   port: 8085
