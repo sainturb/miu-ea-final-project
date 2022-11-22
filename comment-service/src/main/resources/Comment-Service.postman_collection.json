@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "9ea08672-b12d-4030-a96e-f7fda5b40008",
+		"name": "Comment-Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24549082"
+	},
+	"item": [
+		{
+			"name": "GetAllComments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8084/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCommentById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8084/comments/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"comments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddComment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"comment\": \"Special movie!!\",\n\t\"dateTime\": \"2022-11-21T00:00:00\",\n\t\"userId\": 1,\n\t\"motionPictureId\": 2,\n\t\"motionPictureType\": \"MOVIE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateCommentById",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"comment\": \"Very special movie\",\n\t\"dateTime\": \"2022-11-10T00:00:00\",\n\t\"userId\": 1,\n\t\"motionPictureId\": 2,\n\t\"motionPictureType\": \"tvshow\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/comments/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"comments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCommentById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8084/comments/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"comments",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCommentsByMovieId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8084/comments/movies/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"comments",
+						"movies",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCommentsByTvshowId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8084/comments/tvshows/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"comments",
+						"tvshows",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
