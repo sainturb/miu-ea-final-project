@@ -1,24 +1,28 @@
 version: '3'
 services:
   config:
+    image: config-service
     ports:
       - 8090:8090
     extends:
       file: docker-compose-common.yml
       service: common
   gateway:
+    image: gateway-service
     extends:
       file: docker-compose-common.yml
       service: common
     ports:
       - 80:8080
   discovery:
+    image: discovery-service
     extends:
       file: docker-compose-common.yml
       service: common
     ports:
       - 8761:8761
   user-service:
+    image: user-service
     ports:
       - 8081:8081
     extends:
@@ -29,6 +33,7 @@ services:
       KEYCLOAK_SERVER: keycloak
       KEYCLOAK_PORT: 8080
   movie-service:
+    image: movie-service
     ports:
       - 8082:8082
     extends:
@@ -37,6 +42,7 @@ services:
     environment:
       DATABASE_HOST: movie-db
   tvshow-service:
+    image: tvshow-service
     ports:
       - 8083:8083
     extends:
@@ -45,6 +51,7 @@ services:
     environment:
       DATABASE_HOST: tvshow-db
   comment-service:
+    image: comment-service
     ports:
       - 8084:8084
     extends:
@@ -53,6 +60,7 @@ services:
     environment:
       DATABASE_HOST: comment-db
   rating-service:
+    image: rating-service
     ports:
       - 8085:8085
     extends:
@@ -61,30 +69,35 @@ services:
     environment:
       DATABASE_HOST: rating-db
   tvshow-db:
+    image: postgres
     extends:
       file: docker-compose-common.yml
       service: common
     environment:
       POSTGRES_PASSWORD: postgres
   movie-db:
+    image: postgres
     extends:
       file: docker-compose-common.yml
       service: common
     environment:
       POSTGRES_PASSWORD: postgres
   comment-db:
+    image: postgres
     extends:
       file: docker-compose-common.yml
       service: common
     environment:
       POSTGRES_PASSWORD: postgres
   rating-db:
+    image: postgres
     extends:
       file: docker-compose-common.yml
       service: common
     environment:
       POSTGRES_PASSWORD: postgres
   keycloak:
+    image: wizzn/keycloak:14
     extends:
       file: docker-compose-common.yml
       service: common
@@ -110,6 +123,7 @@ services:
       timeout: 3s
       retries: 30
   keycloak-db:
+    image: postgres
     extends:
       file: docker-compose-common.yml
       service: common
@@ -118,21 +132,35 @@ services:
       POSTGRES_USER: keycloak
       POSTGRES_PASSWORD: password
   zipkin:
+    image: openzipkin/zipkin
     extends:
       file: docker-compose-common.yml
       service: common
     ports:
       - 9411:9411
   rabbitmq:
+    platform: linux/amd64
+    image: rabbitmq:3-management
     extends:
       file: docker-compose-common.yml
       service: common
     ports:
       - 5672:5672
       - 5673:15672
-  rabbitmq-service:
+  kafka:
+    image: confluentinc/cp-kafka:5.5.8
+    extends:
+      file: docker-compose-common.yml
+      service: common
+  zookeeper:
+    image: confluentinc/cp-zookeeper:5.5.8
+    extends:
+      file: docker-compose-common.yml
+      service: common
+  kafka-ui:
+    image: provectuslabs/kafka-ui:v0.4.0
     extends:
       file: docker-compose-common.yml
       service: common
     ports:
-      - 8083:8083
+      - 8089:8080

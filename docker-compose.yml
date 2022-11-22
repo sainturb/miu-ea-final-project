@@ -2,96 +2,96 @@ version: '3.8'
 
 services:
   config:
-    image: config-service
     extends:
       file: docker-compose-base.yml
       service: config
   gateway:
-    image: gateway-service
     extends:
       file: docker-compose-base.yml
       service: gateway
   discovery:
-    image: discovery-service
     extends:
       file: docker-compose-base.yml
       service: discovery
   user-service:
-    image: user-service
     extends:
       file: docker-compose-base.yml
       service: user-service
   movie-service:
-    image: movie-service
     extends:
       file: docker-compose-base.yml
       service: movie-service
     depends_on:
       - movie-db
   movie-db:
-    image: postgres
     extends:
       file: docker-compose-base.yml
       service: movie-db
   tvshow-service:
-    image: tvshow-service
     extends:
       file: docker-compose-base.yml
       service: tvshow-service
     depends_on:
       - tvshow-db
   tvshow-db:
-    image: postgres
     extends:
       file: docker-compose-base.yml
       service: tvshow-db
   comment-service:
-    image: comment-service
     extends:
       file: docker-compose-base.yml
       service: comment-service
     depends_on:
       - comment-db
   comment-db:
-    image: postgres
     extends:
       file: docker-compose-base.yml
       service: comment-db
   rating-service:
-    image: rating-service
     extends:
       file: docker-compose-base.yml
       service: rating-service
     depends_on:
       - rating-db
   rating-db:
-    image: postgres
     extends:
       file: docker-compose-base.yml
       service: rating-db
   keycloak:
-    image: wizzn/keycloak:14
     extends:
       file: docker-compose-base.yml
       service: keycloak
     depends_on:
       - keycloak-db
   keycloak-db:
-    image: postgres
     extends:
       file: docker-compose-base.yml
       service: keycloak-db
   zipkin:
-    image: openzipkin/zipkin
     extends:
       file: docker-compose-base.yml
       service: zipkin
   rabbitmq:
-    platform: linux/amd64
-    image: rabbitmq:3-management
     extends:
       file: docker-compose-base.yml
       service: rabbitmq
+  kafka:
+    extends:
+      file: docker-compose-base.yml
+      service: kafka
+    depends_on:
+      - zookeeper
+  zookeeper:
+    extends:
+      file: docker-compose-base.yml
+      service: zookeeper
+  kafka-ui:
+    extends:
+      file: docker-compose-base.yml
+      service: kafka-ui
+    depends_on:
+      - zookeeper
+      - kafka
 
 networks:
   all:
