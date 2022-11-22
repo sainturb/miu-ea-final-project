@@ -29,7 +29,7 @@ public class MotionPictureContoller {
     }
 
     @GetMapping("/{id}")
-    public MotionPicture getMotionPictureById(@PathVariable long id) {
+    public MotionPicture getMotionPictureById(@PathVariable Long id) {
         return motionPictureService.getMotionPictureById(id);
     }
 
@@ -69,8 +69,8 @@ public class MotionPictureContoller {
     }
 
     @GetMapping(path = "/filter", params = "director_id")
-    public List<MotionPicture> findAllByDirectorIdEquals(long directorid) {
-        return motionPictureService.findAllByDirectorIdEquals(directorid);
+    public List<MotionPicture> findAllByDirectorIdEquals(Long director_id) {
+        return motionPictureService.findAllByDirectorIdEquals(director_id);
     }
 
     @GetMapping(path = "/filter", params = "minduration")
@@ -104,12 +104,12 @@ public class MotionPictureContoller {
     }
 
     @DeleteMapping("/{id}")
-    public Boolean deleteMotionPictureById(@PathVariable long id) {
+    public Boolean deleteMotionPictureById(@PathVariable Long id) {
         return motionPictureService.removeMotionPicture(id);
     }
 
     @PutMapping("/{id}")
-    public MotionPicture updateMotionPicture(@PathVariable long id, @RequestBody MotionPicture motionPicture) {
+    public MotionPicture updateMotionPicture(@PathVariable Long id, @RequestBody MotionPicture motionPicture) {
         return motionPictureService.updateMotionPicture(id, motionPicture);
     }
 
