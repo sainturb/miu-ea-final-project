@@ -1,2 +1,6 @@
-package miu.edu.model;public enum MotionPictureType {
+package miu.edu.model;
+
+public enum MotionPictureType {
+    TVSHOW,
+    MOVIE
 }

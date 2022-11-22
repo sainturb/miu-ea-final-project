@@ -1,2 +1,7 @@
-package miu.edu.client;public class UserClient {
+package miu.edu.client;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+@FeignClient(value = "user-service", url = "https://")
+public interface UserClient {
 }
