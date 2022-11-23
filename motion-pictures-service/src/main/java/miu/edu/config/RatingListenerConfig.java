@@ -1,9 +1,13 @@
 package miu.edu.config;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
@@ -14,15 +18,26 @@ import miu.edu.dto.RatingDTO;
 
 @Configuration
 @RequiredArgsConstructor
+@EnableKafka
 public class RatingListenerConfig {
-
-    private final KafkaProperties kafkaProperties;
 
     @Bean
     public ConsumerFactory<String, RatingDTO> ratingConsumerFactory() {
-        return new DefaultKafkaConsumerFactory<>(
-                kafkaProperties.buildConsumerProperties(), new StringDeserializer(),
-                new JsonDeserializer<>(RatingDTO.class));
+
+        Map<String, Object> config = new HashMap<>();
+
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group-1");
+        config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,
+                StringDeserializer.class);
+
+        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,
+                JsonDeserializer.class);
+
+        JsonDeserializer<RatingDTO> jsonDeserializer = new JsonDeserializer<RatingDTO>(RatingDTO.class);
+        jsonDeserializer.addTrustedPackages("miu.edu.dto.*");
+
+        return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(), jsonDeserializer);
     }
 
     @Bean

@@ -2,10 +2,8 @@ package miu.edu.service;
 
 import java.util.List;
 
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.springframework.messaging.handler.annotation.Payload;
-
 import miu.edu.dto.MessageToMotionPicturesDTO;
+import miu.edu.dto.RatingDTO;
 import miu.edu.model.TvShow;
 
 public interface TvShowService {
@@ -21,5 +19,5 @@ public interface TvShowService {
 
     void listenForCommentService(MessageToMotionPicturesDTO payload);
 
-    void listenForRatingService(ConsumerRecord<String, String> cr, @Payload String message);
+    void listenForRatingService(RatingDTO message);
 }

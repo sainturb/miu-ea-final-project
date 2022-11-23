@@ -3,7 +3,6 @@ package miu.edu.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import lombok.NoArgsConstructor;
 import miu.edu.service.MotionPictureService;
 
 @RestController

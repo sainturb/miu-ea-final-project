@@ -24,7 +24,7 @@ spring:
     # generate-ddl: true
   sql:
     init:
-      mode: always
+      mode: always      
 management:
   endpoints:
     web:

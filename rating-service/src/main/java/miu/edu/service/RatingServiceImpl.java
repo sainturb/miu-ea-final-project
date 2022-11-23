@@ -1,7 +1,7 @@
 package miu.edu.service;
 
 import lombok.RequiredArgsConstructor;
-import miu.edu.DTO.RatingDTO;
+import miu.edu.dto.RatingDTO;
 import miu.edu.model.MotionPictureType;
 import miu.edu.model.Rating;
 import miu.edu.repo.RatingRepo;

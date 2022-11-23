@@ -3,15 +3,14 @@ package miu.edu.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import miu.edu.dto.MessageToMotionPicturesDTO;
+import miu.edu.dto.RatingDTO;
 import miu.edu.model.TvShow;
 import miu.edu.repository.TvShowRepo;
 import miu.edu.service.TvShowService;
@@ -73,11 +72,17 @@ public class TvShowServiceImpl implements TvShowService {
     }
 
     @Override
-    @KafkaListener(topics = "TVSHOW", containerFactory = "kafkaRatingListenerStringContainerFactory", groupId = "tvshow")
+    @KafkaListener(topics = "TVSHOW", groupId = "group-1", containerFactory = "kafkaRatingListenerStringContainerFactory")
     @Transactional
-    public void listenForRatingService(ConsumerRecord<String, String> cr, @Payload String message) {
-        // TODO persist average rating
-        System.out.println(message);
+    public void listenForRatingService(RatingDTO message) {
+        if (message.getMotionPictureId() == null) {
+            return;
+        }
+        TvShow foundedTvShow = tvShowRepo.findById(message.getMotionPictureId()).orElse(null);
+        if (foundedTvShow == null) {
+            return;
+        }
+        foundedTvShow.setAverageRating(message.getAvgRating());
     }
 
 }

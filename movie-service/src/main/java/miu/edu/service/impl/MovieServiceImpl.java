@@ -3,15 +3,14 @@ package miu.edu.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import miu.edu.dto.MessageToMotionPicturesDTO;
+import miu.edu.dto.RatingDTO;
 import miu.edu.model.Movie;
 import miu.edu.repository.MovieRepo;
 import miu.edu.service.MovieService;
@@ -72,11 +71,17 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    @KafkaListener(topics = "MOVIE", containerFactory = "kafkaRatingListenerStringContainerFactory", groupId = "movie")
+    @KafkaListener(topics = "MOVIE", groupId = "group-1", containerFactory = "kafkaRatingListenerStringContainerFactory")
     @Transactional
-    public void listenForRatingService(ConsumerRecord<String, String> cr, @Payload String message) {
-        // TODO persist average rating
-        System.out.println(message);
+    public void listenForRatingService(RatingDTO message) {
+        if (message.getMotionPictureId() == null) {
+            return;
+        }
+        Movie foundedMovie = movieRepo.findById(message.getMotionPictureId()).orElse(null);
+        if (foundedMovie == null) {
+            return;
+        }
+        foundedMovie.setAverageRating(message.getAvgRating());
     }
 
 }

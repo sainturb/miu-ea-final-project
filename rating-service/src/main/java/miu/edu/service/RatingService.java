@@ -1,6 +1,6 @@
 package miu.edu.service;
 
-import miu.edu.DTO.RatingDTO;
+import miu.edu.dto.RatingDTO;
 import miu.edu.model.Rating;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
