@@ -1,4 +1,4 @@
-mvn package
+mvn clean install package
 
 docker build -t movie-service -f ./movie-service/Dockerfile .
 
