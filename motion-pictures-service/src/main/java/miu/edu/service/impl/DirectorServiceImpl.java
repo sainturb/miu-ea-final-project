@@ -26,7 +26,7 @@ public class DirectorServiceImpl implements DirectorService {
     }
 
     @Override
-    public Director getDirectorById(long id) {
+    public Director getDirectorById(Long id) {
         return DirectorRepo.findById(id).orElse(null);
     }
 
@@ -36,13 +36,18 @@ public class DirectorServiceImpl implements DirectorService {
     }
 
     @Override
-    public Director addDirector(Director Director) {
-        Director savedDirector = DirectorRepo.save(Director);
-        return savedDirector;
+    public Director addDirector(Director director) {
+        try {
+            Director savedDirector = DirectorRepo.save(director);
+            return savedDirector;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
-    public boolean removeDirector(long id) {
+    public boolean removeDirector(Long id) {
         try {
             DirectorRepo.deleteById(id);
             return true;
@@ -52,7 +57,7 @@ public class DirectorServiceImpl implements DirectorService {
     }
 
     @Override
-    public Director updateDirector(long id, Director Director) {
+    public Director updateDirector(Long id, Director Director) {
         Director.setId(id);
         Director savedDirector = DirectorRepo.save(Director);
         return savedDirector;

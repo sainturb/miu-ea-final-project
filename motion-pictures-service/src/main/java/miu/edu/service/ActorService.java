@@ -7,11 +7,11 @@ import miu.edu.model.Actor;
 public interface ActorService {
     List<Actor> getAllActors();
 
-    Actor getActorById(long id);
+    Actor getActorById(Long id);
 
     Actor addActor(Actor Actor);
 
-    boolean removeActor(long id);
+    boolean removeActor(Long id);
 
-    Actor updateActor(long id, Actor Actor);
+    Actor updateActor(Long id, Actor Actor);
 }

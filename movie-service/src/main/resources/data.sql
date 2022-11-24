@@ -94,8 +94,7 @@ INSERT INTO
         rating,
         released_year,
         director_id,
-        number_of_comments,
-        average_rating
+        number_of_comments
     )
 VALUES (
         'movie',
@@ -104,7 +103,6 @@ VALUES (
         7.0,
         2018,
         1,
-        0,
         0
     );
 
@@ -116,8 +114,7 @@ INSERT INTO
         rating,
         released_year,
         director_id,
-        number_of_comments,
-        average_rating
+        number_of_comments
     )
 VALUES (
         'movie',
@@ -126,7 +123,6 @@ VALUES (
         7.3,
         2022,
         2,
-        0,
         0
     );
 

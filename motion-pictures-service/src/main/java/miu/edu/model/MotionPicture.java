@@ -22,7 +22,7 @@ import lombok.Data;
 @Data
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
-public abstract class MotionPicture {
+public class MotionPicture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,15 +36,14 @@ public abstract class MotionPicture {
     private List<Genre> genres;
 
     @ManyToOne
-    @JsonManagedReference(value = "director")
+    @JsonManagedReference // (value = "director")
     private Director director;
 
     @OneToMany(mappedBy = "motionPicture")
-    @JsonManagedReference(value = "motionPicture")
+    @JsonManagedReference // (value = "motionPicture")
     private List<CharacterOfMotionPicture> characters;
 
     private double duration;
 
     private int numberOfComments;
-    private double averageRating;
 }

@@ -2,43 +2,47 @@ package miu.edu.service;
 
 import java.util.List;
 
-import miu.edu.model.MotionPicture;
+import org.springframework.stereotype.Service;
 
+import miu.edu.dto.MotionPictureDTO;
+
+@Service
 public interface MotionPictureService {
-    List<MotionPicture> getAllMotionPictures();
+    List<MotionPictureDTO> getAllMotionPictures();
 
-    MotionPicture getMotionPictureById(long id);
+    MotionPictureDTO getMotionPictureById(Long id);
 
-    MotionPicture addMotionPicture(MotionPicture motionPicture);
+    MotionPictureDTO addMotionPicture(MotionPictureDTO motionPictureDTO);
 
-    boolean removeMotionPicture(long id);
+    boolean removeMotionPicture(Long id);
 
-    MotionPicture updateMotionPicture(long id, MotionPicture motionPicture);
+    MotionPictureDTO updateMotionPicture(Long id, MotionPictureDTO motionPictureDTO);
 
     // Filters
-    List<MotionPicture> findAllByReleasedYearEquals(int releasedYear);
+    List<MotionPictureDTO> findAllByReleasedYearEquals(int releasedYear);
 
-    List<MotionPicture> findAllByRatingGreaterThanOrEquals(double minRating);
+    List<MotionPictureDTO> findAllByRatingGreaterThanOrEquals(double minRating);
 
-    List<MotionPicture> findAllByRatingLessThanOrEquals(double maxRating);
+    List<MotionPictureDTO> findAllByRatingLessThanOrEquals(double maxRating);
 
-    List<MotionPicture> findAllByRatingBetween(double minRating, double maxRating);
+    List<MotionPictureDTO> findAllByRatingBetween(double minRating, double maxRating);
 
-    List<MotionPicture> findAllByRatingEquals(double rating);
+    List<MotionPictureDTO> findAllByRatingEquals(double rating);
 
-    List<MotionPicture> findAllByGenresId(Long genreId);
+    List<MotionPictureDTO> findAllByGenresId(Long genreId);
 
-    List<MotionPicture> findAllByGenres_NameEquals(String genreName);
+    List<MotionPictureDTO> findAllByGenres_NameEquals(String genreName);
 
-    List<MotionPicture> findAllByDirectorIdEquals(Long directorid);
+    List<MotionPictureDTO> findAllByDirectorIdEquals(Long directorid);
 
-    List<MotionPicture> findAllByDurationGreaterThanOrEquals(double minDuration);
+    List<MotionPictureDTO> findAllByDurationGreaterThanOrEquals(double minDuration);
 
-    List<MotionPicture> findAllByDurationLessThanOrEquals(double maxDuration);
+    List<MotionPictureDTO> findAllByDurationLessThanOrEquals(double maxDuration);
 
-    List<MotionPicture> findAllByDurationBetween(double minDuration, double maxDuration);
+    List<MotionPictureDTO> findAllByDurationBetween(double minDuration, double maxDuration);
 
-    List<MotionPicture> findAllByDurationEquals(double duration);
+    List<MotionPictureDTO> findAllByDurationEquals(double duration);
 
-    List<MotionPicture> findAllByCharacters_ActorIdEquals(Long actorId);
+    List<MotionPictureDTO> findAllByCharacters_ActorIdEquals(Long actorId);
+
 }

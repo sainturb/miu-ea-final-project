@@ -1,43 +1,40 @@
 package miu.edu.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import miu.edu.dto.MotionPictureDTO;
+import miu.edu.dto.MovieDTO;
 import miu.edu.service.MotionPictureService;
 
 @RestController
-// @RequiredArgsConstructor
 @RequestMapping("api/v1/movies")
 public class MovieController extends MotionPictureContoller {
 
+    private final MotionPictureService motionPictureService;
+
     public MovieController(MotionPictureService motionPictureService) {
         super(motionPictureService);
+        this.motionPictureService = motionPictureService;
     }
 
-    // private final MovieService movieService;
+    @PostMapping
+    public MotionPictureDTO addMotionPicture(@RequestBody MovieDTO movieDTO) {
+        return motionPictureService.addMotionPicture(movieDTO);
+    }
 
-    // @GetMapping
-    // public List<Movie> getAllMovies() {
-    // return movieService.getAllMovies();
-    // }
+    @PutMapping("/{id}")
+    public MotionPictureDTO updateMotionPicture(@PathVariable Long id, @RequestBody MovieDTO movieDTO) {
+        return motionPictureService.updateMotionPicture(id, movieDTO);
+    }
 
-    // @GetMapping("/{id}")
-    // public Movie getMovieById(@PathVariable long id) {
-    // return movieService.getMovieById(id);
-    // }
-
-    // @PostMapping
-    // public Movie getAllMovies(@RequestBody Movie Movie) {
-    // return movieService.addMovie(Movie);
-    // }
-
-    // @DeleteMapping("/{id}")
-    // public Boolean deleteMovieById(@PathVariable long id) {
-    // return movieService.removeMovie(id);
-    // }
-
-    // @PutMapping("/{id}")
-    // public Movie updateMovie(@PathVariable long id, @RequestBody Movie Movie) {
-    // return movieService.updateMovie(id, Movie);
-    // }
+    @DeleteMapping("/{id}")
+    public Boolean deleteMotionPictureById(@PathVariable Long id) {
+        return motionPictureService.removeMotionPicture(id);
+    }
 }

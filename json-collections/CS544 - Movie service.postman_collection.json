@@ -1,0 +1,527 @@
+{
+	"info": {
+		"_postman_id": "aa5ba90a-7c1e-446d-b22a-01564180d193",
+		"name": "CS544 - Movie service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetMovies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/v1/movies",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMovieById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/v1/movies/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByReleasedYearEquals",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/v1/movies/filter?releasedyear=2022",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "releasedyear",
+							"value": "2022"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByRatingGreaterThan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/v1/movies/filter?minrating=7.1",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "minrating",
+							"value": "7.1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByRatingLessThan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/v1/movies/filter?maxrating=7.1",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "maxrating",
+							"value": "7.1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByRatingBetween",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/v1/movies/filter?minrating=7.0&maxrating=8.0",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "minrating",
+							"value": "7.0"
+						},
+						{
+							"key": "maxrating",
+							"value": "8.0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByRatingEquals",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/v1/movies/filter?rating=7.3",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "rating",
+							"value": "7.3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByGenreNameEquals",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/v1/movies/filter?genre_name=Action",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "genre_name",
+							"value": "Action"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByGenreIdEquals",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/v1/movies/filter?genre_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "genre_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByDirectorIdEquals",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/v1/movies/filter?director_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "director_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByDurationGreaterThan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/v1/movies/filter?minduration=120",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "minduration",
+							"value": "120"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByDurationLessThan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/v1/movies/filter?maxduration=150",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "maxduration",
+							"value": "150"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByDurationBetween",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/v1/movies/filter?minduration=150&maxduration=200",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "minduration",
+							"value": "150"
+						},
+						{
+							"key": "maxduration",
+							"value": "200"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByDurationEquals",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/v1/movies/filter?duration=127",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "duration",
+							"value": "127"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByActorIdEquals",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/v1/movies/filter?actor_id=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "actor_id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddMovie",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{        \n    \"name\": \"Black Ada\",\n    \"releasedYear\": 2022,\n    \"rating\": 6.9,\n    \"genres\": [\n        {\n            \"id\": 1,\n            \"name\": \"Action\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Adventure\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Fantasy\",\n            \"description\": \"\"\n        }\n    ],\n    \"director\": {\n        \"id\": 8,\n        \"firstName\": \"Jaume\",\n        \"lastName\": \"Collet-Serra\",\n        \"dob\": \"1974-03-23\",\n        \"gender\": \"MALE\",\n        \"biography\": \"Jaume Collet-Serra was born on March 23, 1974 in Barcelona, Barcelona, Catalonia, Spain.\"\n    },\n    \"duration\": 125.0,\n    \"numberOfComments\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8082/api/v1/movies",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateMovie",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{        \n    \"name\": \"Black Adam\",\n    \"releasedYear\": 2022,\n    \"rating\": 6.9,\n    \"genres\": [\n        {\n            \"id\": 1,\n            \"name\": \"Action\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Adventure\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Fantasy\",\n            \"description\": \"\"\n        }\n    ],\n    \"director\": {\n        \"id\": 8,\n        \"firstName\": \"Jaume\",\n        \"lastName\": \"Collet-Serra\",\n        \"dob\": \"1974-03-23\",\n        \"gender\": \"MALE\",\n        \"biography\": \"Jaume Collet-Serra was born on March 23, 1974 in Barcelona, Barcelona, Catalonia, Spain.\"\n    },\n    \"duration\": 125.0,\n    \"numberOfComments\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8082/api/v1/movies/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteMovie",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8082/api/v1/movies/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddDirector",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Jaume\",\n    \"lastName\": \"Collet-Serra\",\n    \"dob\": \"1974-03-23\",\n    \"gender\": \"MALE\",\n    \"biography\": \"Jaume Collet-Serra was born on March 23, 1974 in Barcelona, Barcelona, Catalonia, Spain.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8082/api/v1/directors",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"directors"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -9,7 +9,7 @@ import lombok.Data;
 @Embeddable
 @Data
 public class CharacterOfMotionPictureId implements Serializable {
-    private long actorId;
-    private long motionPictureId;
+    private Long actorId;
+    private Long motionPictureId;
 
 }
