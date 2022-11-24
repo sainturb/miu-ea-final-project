@@ -1,5 +1,6 @@
 package miu.edu.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,16 +25,19 @@ public class TvShowController extends MotionPictureContoller {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ROLE_OWNER')")
     public MotionPictureDTO addMotionPicture(@RequestBody TvShowDTO tvShowDTO) {
         return motionPictureService.addMotionPicture(tvShowDTO);
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_OWNER')")
     public MotionPictureDTO updateTvShow(@PathVariable Long id, @RequestBody TvShowDTO tvShowDTO) {
         return motionPictureService.updateMotionPicture(id, tvShowDTO);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_OWNER')")
     public Boolean deleteTvShowById(@PathVariable Long id) {
         return motionPictureService.removeMotionPicture(id);
     }
