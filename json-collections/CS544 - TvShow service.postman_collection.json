@@ -1,0 +1,677 @@
+{
+	"info": {
+		"_postman_id": "9765b23b-54a4-415f-a6b5-8efb8c16ea68",
+		"name": "CS544 - TvShow service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetTvShows",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJueG40ZXhWUTdsZzdOYXhUd0c3YVlOYm4tMFdlTDlkaUU4ZDdZbkFjTzJVIn0.eyJleHAiOjE2NjkyNjc1NzEsImlhdCI6MTY2OTI2NzI3MSwianRpIjoiZGJkMDUwMmYtMzA2Yi00NGVkLWEwZWMtNDIyMzdkMzEzMWI5IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL3NwcmluZy1yZWFsbSIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIzNzVlMDIwOC04ZTQ2LTQ2YTYtOWJkOS0yNmIzNDlmM2VjMzIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWItYXBwIiwic2Vzc2lvbl9zdGF0ZSI6ImYxYTdlYWU3LWE1ZjktNDI5Ni1hNmQwLTM5ODY0YzdlZDBjMyIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwcmluZy1yZWFsbSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsid2ViLWFwcCI6eyJyb2xlcyI6WyJVU0VSIl19LCJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidXNlcjEgZiB1c2VyMSBsIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjEiLCJnaXZlbl9uYW1lIjoidXNlcjEgZiIsImZhbWlseV9uYW1lIjoidXNlcjEgbCIsImVtYWlsIjoidXNlcjFAbWFpbC5jb20ifQ.RO1R9p_MeuqsOVxGu10qleQIJBBhqC5BXpUqWU_NNt4MkEl8iybnVTYcBwTy5XLZXIu7GlyD4SZHNvzY26sfekoB5holM0eACErxelebUKFI4E3nIhbbkkemN3ZH_wD16E3bDpFV3sAlszLnupiMO00yixb2uAjuoyDe0T9GVl49GEugZB69Ht2VDWNYWXHHN8KO5eMxD8_dDQNzybdc74XF2XcXWk0l4q8CPyzJfFPGb6jXCkh9VnCOePO50e6ih_-0IElh9-Q6RaNiTU8vL-k53MH_hAptMPcUA_18OCVtDyORO3EJIze4u68fuORH7bG1wcY16oCjC66-zeUUUQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJueG40ZXhWUTdsZzdOYXhUd0c3YVlOYm4tMFdlTDlkaUU4ZDdZbkFjTzJVIn0.eyJleHAiOjE2NjkyNjY4NzUsImlhdCI6MTY2OTI2NjU3NSwianRpIjoiMzgwMGY0MjYtODYwMS00MmQyLTlhODQtOGU5MDU1NmY3MWYwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL3NwcmluZy1yZWFsbSIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIzNzVlMDIwOC04ZTQ2LTQ2YTYtOWJkOS0yNmIzNDlmM2VjMzIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWItYXBwIiwic2Vzc2lvbl9zdGF0ZSI6ImQxNjFlNzgwLWMxODctNDA1OS1hNDMxLTY0Y2NhNjJkM2EyNiIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwcmluZy1yZWFsbSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsid2ViLWFwcCI6eyJyb2xlcyI6WyJVU0VSIl19LCJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidXNlcjEgZiB1c2VyMSBsIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjEiLCJnaXZlbl9uYW1lIjoidXNlcjEgZiIsImZhbWlseV9uYW1lIjoidXNlcjEgbCIsImVtYWlsIjoidXNlcjFAbWFpbC5jb20ifQ.byj6k6P-1kJeoH56UYAIM1Hqskf53KqL2x8AgNIo9ap-EpZ1dgi-F5nTTLe_e9HJO6p9Vuxb4DkVEOyDv90U0p02qHuU5lTBQEzt75LsmVLRObB9YvyvGlb-AimRgcD5_yk_fC-yL1ibvmEB0Ze2eurk82ZBroY6Zr6RggumAuNA9P_GZL9BBmRBEopdDPOaNyZ6hcnhK59ff-7fL1plGOpPXPXQNrvxsjsjTm_NvJMWamP3vyZIFAZYBkc8fW8knNcAJ6FAGqam5wbE33pLtFuHIVPLdZszLDOghQAtIxnpUj7iqq0Ybg7g6VvAMxhc0YGB8cvOQF4A95IiiEvNtQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByReleasedYearEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJueG40ZXhWUTdsZzdOYXhUd0c3YVlOYm4tMFdlTDlkaUU4ZDdZbkFjTzJVIn0.eyJleHAiOjE2NjkyNjY4NzUsImlhdCI6MTY2OTI2NjU3NSwianRpIjoiMzgwMGY0MjYtODYwMS00MmQyLTlhODQtOGU5MDU1NmY3MWYwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL3NwcmluZy1yZWFsbSIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIzNzVlMDIwOC04ZTQ2LTQ2YTYtOWJkOS0yNmIzNDlmM2VjMzIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWItYXBwIiwic2Vzc2lvbl9zdGF0ZSI6ImQxNjFlNzgwLWMxODctNDA1OS1hNDMxLTY0Y2NhNjJkM2EyNiIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwcmluZy1yZWFsbSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsid2ViLWFwcCI6eyJyb2xlcyI6WyJVU0VSIl19LCJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidXNlcjEgZiB1c2VyMSBsIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjEiLCJnaXZlbl9uYW1lIjoidXNlcjEgZiIsImZhbWlseV9uYW1lIjoidXNlcjEgbCIsImVtYWlsIjoidXNlcjFAbWFpbC5jb20ifQ.byj6k6P-1kJeoH56UYAIM1Hqskf53KqL2x8AgNIo9ap-EpZ1dgi-F5nTTLe_e9HJO6p9Vuxb4DkVEOyDv90U0p02qHuU5lTBQEzt75LsmVLRObB9YvyvGlb-AimRgcD5_yk_fC-yL1ibvmEB0Ze2eurk82ZBroY6Zr6RggumAuNA9P_GZL9BBmRBEopdDPOaNyZ6hcnhK59ff-7fL1plGOpPXPXQNrvxsjsjTm_NvJMWamP3vyZIFAZYBkc8fW8knNcAJ6FAGqam5wbE33pLtFuHIVPLdZszLDOghQAtIxnpUj7iqq0Ybg7g6VvAMxhc0YGB8cvOQF4A95IiiEvNtQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows/filter?releasedyear=2011",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "releasedyear",
+							"value": "2011"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByRatingGreaterThan",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJueG40ZXhWUTdsZzdOYXhUd0c3YVlOYm4tMFdlTDlkaUU4ZDdZbkFjTzJVIn0.eyJleHAiOjE2NjkyNjY4NzUsImlhdCI6MTY2OTI2NjU3NSwianRpIjoiMzgwMGY0MjYtODYwMS00MmQyLTlhODQtOGU5MDU1NmY3MWYwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL3NwcmluZy1yZWFsbSIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIzNzVlMDIwOC04ZTQ2LTQ2YTYtOWJkOS0yNmIzNDlmM2VjMzIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWItYXBwIiwic2Vzc2lvbl9zdGF0ZSI6ImQxNjFlNzgwLWMxODctNDA1OS1hNDMxLTY0Y2NhNjJkM2EyNiIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwcmluZy1yZWFsbSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsid2ViLWFwcCI6eyJyb2xlcyI6WyJVU0VSIl19LCJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidXNlcjEgZiB1c2VyMSBsIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjEiLCJnaXZlbl9uYW1lIjoidXNlcjEgZiIsImZhbWlseV9uYW1lIjoidXNlcjEgbCIsImVtYWlsIjoidXNlcjFAbWFpbC5jb20ifQ.byj6k6P-1kJeoH56UYAIM1Hqskf53KqL2x8AgNIo9ap-EpZ1dgi-F5nTTLe_e9HJO6p9Vuxb4DkVEOyDv90U0p02qHuU5lTBQEzt75LsmVLRObB9YvyvGlb-AimRgcD5_yk_fC-yL1ibvmEB0Ze2eurk82ZBroY6Zr6RggumAuNA9P_GZL9BBmRBEopdDPOaNyZ6hcnhK59ff-7fL1plGOpPXPXQNrvxsjsjTm_NvJMWamP3vyZIFAZYBkc8fW8knNcAJ6FAGqam5wbE33pLtFuHIVPLdZszLDOghQAtIxnpUj7iqq0Ybg7g6VvAMxhc0YGB8cvOQF4A95IiiEvNtQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows/filter?minrating=7.1",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "minrating",
+							"value": "7.1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByRatingLessThan",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJueG40ZXhWUTdsZzdOYXhUd0c3YVlOYm4tMFdlTDlkaUU4ZDdZbkFjTzJVIn0.eyJleHAiOjE2NjkyNjY4NzUsImlhdCI6MTY2OTI2NjU3NSwianRpIjoiMzgwMGY0MjYtODYwMS00MmQyLTlhODQtOGU5MDU1NmY3MWYwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL3NwcmluZy1yZWFsbSIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIzNzVlMDIwOC04ZTQ2LTQ2YTYtOWJkOS0yNmIzNDlmM2VjMzIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWItYXBwIiwic2Vzc2lvbl9zdGF0ZSI6ImQxNjFlNzgwLWMxODctNDA1OS1hNDMxLTY0Y2NhNjJkM2EyNiIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwcmluZy1yZWFsbSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsid2ViLWFwcCI6eyJyb2xlcyI6WyJVU0VSIl19LCJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidXNlcjEgZiB1c2VyMSBsIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjEiLCJnaXZlbl9uYW1lIjoidXNlcjEgZiIsImZhbWlseV9uYW1lIjoidXNlcjEgbCIsImVtYWlsIjoidXNlcjFAbWFpbC5jb20ifQ.byj6k6P-1kJeoH56UYAIM1Hqskf53KqL2x8AgNIo9ap-EpZ1dgi-F5nTTLe_e9HJO6p9Vuxb4DkVEOyDv90U0p02qHuU5lTBQEzt75LsmVLRObB9YvyvGlb-AimRgcD5_yk_fC-yL1ibvmEB0Ze2eurk82ZBroY6Zr6RggumAuNA9P_GZL9BBmRBEopdDPOaNyZ6hcnhK59ff-7fL1plGOpPXPXQNrvxsjsjTm_NvJMWamP3vyZIFAZYBkc8fW8knNcAJ6FAGqam5wbE33pLtFuHIVPLdZszLDOghQAtIxnpUj7iqq0Ybg7g6VvAMxhc0YGB8cvOQF4A95IiiEvNtQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows/filter?maxrating=9.8",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "maxrating",
+							"value": "9.8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByRatingBetween",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJueG40ZXhWUTdsZzdOYXhUd0c3YVlOYm4tMFdlTDlkaUU4ZDdZbkFjTzJVIn0.eyJleHAiOjE2NjkyNjY4NzUsImlhdCI6MTY2OTI2NjU3NSwianRpIjoiMzgwMGY0MjYtODYwMS00MmQyLTlhODQtOGU5MDU1NmY3MWYwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL3NwcmluZy1yZWFsbSIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIzNzVlMDIwOC04ZTQ2LTQ2YTYtOWJkOS0yNmIzNDlmM2VjMzIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWItYXBwIiwic2Vzc2lvbl9zdGF0ZSI6ImQxNjFlNzgwLWMxODctNDA1OS1hNDMxLTY0Y2NhNjJkM2EyNiIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwcmluZy1yZWFsbSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsid2ViLWFwcCI6eyJyb2xlcyI6WyJVU0VSIl19LCJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidXNlcjEgZiB1c2VyMSBsIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjEiLCJnaXZlbl9uYW1lIjoidXNlcjEgZiIsImZhbWlseV9uYW1lIjoidXNlcjEgbCIsImVtYWlsIjoidXNlcjFAbWFpbC5jb20ifQ.byj6k6P-1kJeoH56UYAIM1Hqskf53KqL2x8AgNIo9ap-EpZ1dgi-F5nTTLe_e9HJO6p9Vuxb4DkVEOyDv90U0p02qHuU5lTBQEzt75LsmVLRObB9YvyvGlb-AimRgcD5_yk_fC-yL1ibvmEB0Ze2eurk82ZBroY6Zr6RggumAuNA9P_GZL9BBmRBEopdDPOaNyZ6hcnhK59ff-7fL1plGOpPXPXQNrvxsjsjTm_NvJMWamP3vyZIFAZYBkc8fW8knNcAJ6FAGqam5wbE33pLtFuHIVPLdZszLDOghQAtIxnpUj7iqq0Ybg7g6VvAMxhc0YGB8cvOQF4A95IiiEvNtQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows/filter?minrating=7.0&maxrating=9.3",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "minrating",
+							"value": "7.0"
+						},
+						{
+							"key": "maxrating",
+							"value": "9.3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByRatingEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJueG40ZXhWUTdsZzdOYXhUd0c3YVlOYm4tMFdlTDlkaUU4ZDdZbkFjTzJVIn0.eyJleHAiOjE2NjkyNjY4NzUsImlhdCI6MTY2OTI2NjU3NSwianRpIjoiMzgwMGY0MjYtODYwMS00MmQyLTlhODQtOGU5MDU1NmY3MWYwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL3NwcmluZy1yZWFsbSIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIzNzVlMDIwOC04ZTQ2LTQ2YTYtOWJkOS0yNmIzNDlmM2VjMzIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWItYXBwIiwic2Vzc2lvbl9zdGF0ZSI6ImQxNjFlNzgwLWMxODctNDA1OS1hNDMxLTY0Y2NhNjJkM2EyNiIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwcmluZy1yZWFsbSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsid2ViLWFwcCI6eyJyb2xlcyI6WyJVU0VSIl19LCJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidXNlcjEgZiB1c2VyMSBsIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjEiLCJnaXZlbl9uYW1lIjoidXNlcjEgZiIsImZhbWlseV9uYW1lIjoidXNlcjEgbCIsImVtYWlsIjoidXNlcjFAbWFpbC5jb20ifQ.byj6k6P-1kJeoH56UYAIM1Hqskf53KqL2x8AgNIo9ap-EpZ1dgi-F5nTTLe_e9HJO6p9Vuxb4DkVEOyDv90U0p02qHuU5lTBQEzt75LsmVLRObB9YvyvGlb-AimRgcD5_yk_fC-yL1ibvmEB0Ze2eurk82ZBroY6Zr6RggumAuNA9P_GZL9BBmRBEopdDPOaNyZ6hcnhK59ff-7fL1plGOpPXPXQNrvxsjsjTm_NvJMWamP3vyZIFAZYBkc8fW8knNcAJ6FAGqam5wbE33pLtFuHIVPLdZszLDOghQAtIxnpUj7iqq0Ybg7g6VvAMxhc0YGB8cvOQF4A95IiiEvNtQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows/filter?rating=9.5",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "rating",
+							"value": "9.5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByGenreNameEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJueG40ZXhWUTdsZzdOYXhUd0c3YVlOYm4tMFdlTDlkaUU4ZDdZbkFjTzJVIn0.eyJleHAiOjE2NjkyNjY4NzUsImlhdCI6MTY2OTI2NjU3NSwianRpIjoiMzgwMGY0MjYtODYwMS00MmQyLTlhODQtOGU5MDU1NmY3MWYwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL3NwcmluZy1yZWFsbSIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIzNzVlMDIwOC04ZTQ2LTQ2YTYtOWJkOS0yNmIzNDlmM2VjMzIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWItYXBwIiwic2Vzc2lvbl9zdGF0ZSI6ImQxNjFlNzgwLWMxODctNDA1OS1hNDMxLTY0Y2NhNjJkM2EyNiIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwcmluZy1yZWFsbSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsid2ViLWFwcCI6eyJyb2xlcyI6WyJVU0VSIl19LCJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidXNlcjEgZiB1c2VyMSBsIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjEiLCJnaXZlbl9uYW1lIjoidXNlcjEgZiIsImZhbWlseV9uYW1lIjoidXNlcjEgbCIsImVtYWlsIjoidXNlcjFAbWFpbC5jb20ifQ.byj6k6P-1kJeoH56UYAIM1Hqskf53KqL2x8AgNIo9ap-EpZ1dgi-F5nTTLe_e9HJO6p9Vuxb4DkVEOyDv90U0p02qHuU5lTBQEzt75LsmVLRObB9YvyvGlb-AimRgcD5_yk_fC-yL1ibvmEB0Ze2eurk82ZBroY6Zr6RggumAuNA9P_GZL9BBmRBEopdDPOaNyZ6hcnhK59ff-7fL1plGOpPXPXQNrvxsjsjTm_NvJMWamP3vyZIFAZYBkc8fW8knNcAJ6FAGqam5wbE33pLtFuHIVPLdZszLDOghQAtIxnpUj7iqq0Ybg7g6VvAMxhc0YGB8cvOQF4A95IiiEvNtQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows/filter?genre_name=Action",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "genre_name",
+							"value": "Action"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByGenreIdEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJueG40ZXhWUTdsZzdOYXhUd0c3YVlOYm4tMFdlTDlkaUU4ZDdZbkFjTzJVIn0.eyJleHAiOjE2NjkyNjY4NzUsImlhdCI6MTY2OTI2NjU3NSwianRpIjoiMzgwMGY0MjYtODYwMS00MmQyLTlhODQtOGU5MDU1NmY3MWYwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL3NwcmluZy1yZWFsbSIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIzNzVlMDIwOC04ZTQ2LTQ2YTYtOWJkOS0yNmIzNDlmM2VjMzIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWItYXBwIiwic2Vzc2lvbl9zdGF0ZSI6ImQxNjFlNzgwLWMxODctNDA1OS1hNDMxLTY0Y2NhNjJkM2EyNiIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwcmluZy1yZWFsbSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsid2ViLWFwcCI6eyJyb2xlcyI6WyJVU0VSIl19LCJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidXNlcjEgZiB1c2VyMSBsIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjEiLCJnaXZlbl9uYW1lIjoidXNlcjEgZiIsImZhbWlseV9uYW1lIjoidXNlcjEgbCIsImVtYWlsIjoidXNlcjFAbWFpbC5jb20ifQ.byj6k6P-1kJeoH56UYAIM1Hqskf53KqL2x8AgNIo9ap-EpZ1dgi-F5nTTLe_e9HJO6p9Vuxb4DkVEOyDv90U0p02qHuU5lTBQEzt75LsmVLRObB9YvyvGlb-AimRgcD5_yk_fC-yL1ibvmEB0Ze2eurk82ZBroY6Zr6RggumAuNA9P_GZL9BBmRBEopdDPOaNyZ6hcnhK59ff-7fL1plGOpPXPXQNrvxsjsjTm_NvJMWamP3vyZIFAZYBkc8fW8knNcAJ6FAGqam5wbE33pLtFuHIVPLdZszLDOghQAtIxnpUj7iqq0Ybg7g6VvAMxhc0YGB8cvOQF4A95IiiEvNtQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows/filter?genre_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "genre_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByDirectorIdEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJueG40ZXhWUTdsZzdOYXhUd0c3YVlOYm4tMFdlTDlkaUU4ZDdZbkFjTzJVIn0.eyJleHAiOjE2NjkyNjcxMjksImlhdCI6MTY2OTI2NjgyOSwianRpIjoiMTY3Y2Y5NTItYjE3ZS00YzcxLTg3ZWYtMTcxMjMzMDZhMmIwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL3NwcmluZy1yZWFsbSIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIzNzVlMDIwOC04ZTQ2LTQ2YTYtOWJkOS0yNmIzNDlmM2VjMzIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWItYXBwIiwic2Vzc2lvbl9zdGF0ZSI6IjM0YmM0YWVkLTljMDUtNGRlNi05MmRkLTFlZDk0NDMxYTMzYSIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwcmluZy1yZWFsbSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsid2ViLWFwcCI6eyJyb2xlcyI6WyJVU0VSIl19LCJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidXNlcjEgZiB1c2VyMSBsIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjEiLCJnaXZlbl9uYW1lIjoidXNlcjEgZiIsImZhbWlseV9uYW1lIjoidXNlcjEgbCIsImVtYWlsIjoidXNlcjFAbWFpbC5jb20ifQ.sM5R7C3Mqq61YAXtUaTPkd6_Sc5BiPP6HVyxRasTQMi8v4OSy8XhKRLW9_Zg9TA2Eftpk7B5zJMg9zTkmQKHEd9Vyr8b_9Mu_vczr6ujrVUC3y2KzxJVx8G2rQQ3opT7eEWut842OZUlchFY_72u60jqd84bOscCVpESLrNmg1QUdV_gwEB6lOojivFzmlzXbfY5ixP87np_r0a4v2UEFBZrv2VO99xcn0Sl7CojZTXdixZeD9jl_D9nwFWFLOO-DSDieZjUp6RPNqId4HeOe4Fj9I670jnSgLsXJBh5mn3zJKvRg1fa8GpBJMvesbMCzFyMcUl65s1gUIEMHMmZSw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows/filter?director_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "director_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByDurationGreaterThan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows/filter?minduration=120",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "minduration",
+							"value": "120"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByDurationLessThan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows/filter?maxduration=6000",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "maxduration",
+							"value": "6000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByDurationBetween",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows/filter?minduration=4000&maxduration=6000",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "minduration",
+							"value": "4000"
+						},
+						{
+							"key": "maxduration",
+							"value": "6000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByDurationEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJueG40ZXhWUTdsZzdOYXhUd0c3YVlOYm4tMFdlTDlkaUU4ZDdZbkFjTzJVIn0.eyJleHAiOjE2NjkyNjcxMjksImlhdCI6MTY2OTI2NjgyOSwianRpIjoiMTY3Y2Y5NTItYjE3ZS00YzcxLTg3ZWYtMTcxMjMzMDZhMmIwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL3NwcmluZy1yZWFsbSIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIzNzVlMDIwOC04ZTQ2LTQ2YTYtOWJkOS0yNmIzNDlmM2VjMzIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWItYXBwIiwic2Vzc2lvbl9zdGF0ZSI6IjM0YmM0YWVkLTljMDUtNGRlNi05MmRkLTFlZDk0NDMxYTMzYSIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwcmluZy1yZWFsbSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsid2ViLWFwcCI6eyJyb2xlcyI6WyJVU0VSIl19LCJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidXNlcjEgZiB1c2VyMSBsIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjEiLCJnaXZlbl9uYW1lIjoidXNlcjEgZiIsImZhbWlseV9uYW1lIjoidXNlcjEgbCIsImVtYWlsIjoidXNlcjFAbWFpbC5jb20ifQ.sM5R7C3Mqq61YAXtUaTPkd6_Sc5BiPP6HVyxRasTQMi8v4OSy8XhKRLW9_Zg9TA2Eftpk7B5zJMg9zTkmQKHEd9Vyr8b_9Mu_vczr6ujrVUC3y2KzxJVx8G2rQQ3opT7eEWut842OZUlchFY_72u60jqd84bOscCVpESLrNmg1QUdV_gwEB6lOojivFzmlzXbfY5ixP87np_r0a4v2UEFBZrv2VO99xcn0Sl7CojZTXdixZeD9jl_D9nwFWFLOO-DSDieZjUp6RPNqId4HeOe4Fj9I670jnSgLsXJBh5mn3zJKvRg1fa8GpBJMvesbMCzFyMcUl65s1gUIEMHMmZSw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows/filter?duration=4214",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "duration",
+							"value": "4214"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByActorIdEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJueG40ZXhWUTdsZzdOYXhUd0c3YVlOYm4tMFdlTDlkaUU4ZDdZbkFjTzJVIn0.eyJleHAiOjE2NjkyNjcxMjksImlhdCI6MTY2OTI2NjgyOSwianRpIjoiMTY3Y2Y5NTItYjE3ZS00YzcxLTg3ZWYtMTcxMjMzMDZhMmIwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL3NwcmluZy1yZWFsbSIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIzNzVlMDIwOC04ZTQ2LTQ2YTYtOWJkOS0yNmIzNDlmM2VjMzIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWItYXBwIiwic2Vzc2lvbl9zdGF0ZSI6IjM0YmM0YWVkLTljMDUtNGRlNi05MmRkLTFlZDk0NDMxYTMzYSIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwcmluZy1yZWFsbSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsid2ViLWFwcCI6eyJyb2xlcyI6WyJVU0VSIl19LCJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidXNlcjEgZiB1c2VyMSBsIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjEiLCJnaXZlbl9uYW1lIjoidXNlcjEgZiIsImZhbWlseV9uYW1lIjoidXNlcjEgbCIsImVtYWlsIjoidXNlcjFAbWFpbC5jb20ifQ.sM5R7C3Mqq61YAXtUaTPkd6_Sc5BiPP6HVyxRasTQMi8v4OSy8XhKRLW9_Zg9TA2Eftpk7B5zJMg9zTkmQKHEd9Vyr8b_9Mu_vczr6ujrVUC3y2KzxJVx8G2rQQ3opT7eEWut842OZUlchFY_72u60jqd84bOscCVpESLrNmg1QUdV_gwEB6lOojivFzmlzXbfY5ixP87np_r0a4v2UEFBZrv2VO99xcn0Sl7CojZTXdixZeD9jl_D9nwFWFLOO-DSDieZjUp6RPNqId4HeOe4Fj9I670jnSgLsXJBh5mn3zJKvRg1fa8GpBJMvesbMCzFyMcUl65s1gUIEMHMmZSw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows/filter?actor_id=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "actor_id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddDirector",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJueG40ZXhWUTdsZzdOYXhUd0c3YVlOYm4tMFdlTDlkaUU4ZDdZbkFjTzJVIn0.eyJleHAiOjE2NjkyNjc1NzEsImlhdCI6MTY2OTI2NzI3MSwianRpIjoiZGJkMDUwMmYtMzA2Yi00NGVkLWEwZWMtNDIyMzdkMzEzMWI5IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL3NwcmluZy1yZWFsbSIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIzNzVlMDIwOC04ZTQ2LTQ2YTYtOWJkOS0yNmIzNDlmM2VjMzIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWItYXBwIiwic2Vzc2lvbl9zdGF0ZSI6ImYxYTdlYWU3LWE1ZjktNDI5Ni1hNmQwLTM5ODY0YzdlZDBjMyIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwcmluZy1yZWFsbSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsid2ViLWFwcCI6eyJyb2xlcyI6WyJVU0VSIl19LCJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidXNlcjEgZiB1c2VyMSBsIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjEiLCJnaXZlbl9uYW1lIjoidXNlcjEgZiIsImZhbWlseV9uYW1lIjoidXNlcjEgbCIsImVtYWlsIjoidXNlcjFAbWFpbC5jb20ifQ.RO1R9p_MeuqsOVxGu10qleQIJBBhqC5BXpUqWU_NNt4MkEl8iybnVTYcBwTy5XLZXIu7GlyD4SZHNvzY26sfekoB5holM0eACErxelebUKFI4E3nIhbbkkemN3ZH_wD16E3bDpFV3sAlszLnupiMO00yixb2uAjuoyDe0T9GVl49GEugZB69Ht2VDWNYWXHHN8KO5eMxD8_dDQNzybdc74XF2XcXWk0l4q8CPyzJfFPGb6jXCkh9VnCOePO50e6ih_-0IElh9-Q6RaNiTU8vL-k53MH_hAptMPcUA_18OCVtDyORO3EJIze4u68fuORH7bG1wcY16oCjC66-zeUUUQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n    \"firstName\": \"Dan\",\n    \"lastName\": \"Harmon\",\n    \"dob\": \"1973-01-03\",\n    \"gender\": \"MALE\",\n    \"biography\": \"Dan Harmon was born on January 3, 1973 in Milwaukee, Wisconsin, USA.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/api/v1/directors",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"directors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddTvShow",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJueG40ZXhWUTdsZzdOYXhUd0c3YVlOYm4tMFdlTDlkaUU4ZDdZbkFjTzJVIn0.eyJleHAiOjE2NjkyNjc2NDksImlhdCI6MTY2OTI2NzM0OSwianRpIjoiMGM4MzYxNzctNTdjMS00ZTM5LTg4Y2UtMjRiNTg5NWViZDg1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL3NwcmluZy1yZWFsbSIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiI3ZDhjNGEzZi04ZmQwLTQzNjAtOWZlNi00YmRjNjMzZDdjMTYiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWItYXBwIiwic2Vzc2lvbl9zdGF0ZSI6IjY3ZjEyZTdiLTE4NzUtNDRhMi1hOGNjLTdmNDYxODE4YjRjZiIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwcmluZy1yZWFsbSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsid2ViLWFwcCI6eyJyb2xlcyI6WyJPV05FUiJdfSwicmVhbG0tbWFuYWdlbWVudCI6eyJyb2xlcyI6WyJ2aWV3LXVzZXJzIiwicXVlcnktZ3JvdXBzIiwicXVlcnktdXNlcnMiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6Im93bmVyMSBmIG93bmVyMSBsIiwicHJlZmVycmVkX3VzZXJuYW1lIjoib3duZXIxIiwiZ2l2ZW5fbmFtZSI6Im93bmVyMSBmIiwiZmFtaWx5X25hbWUiOiJvd25lcjEgbCIsImVtYWlsIjoib3duZXIxQG1haWwuY29tIn0.UTLZduy6lQv9GddrpH-l9Dv1PRCdlOFgnyaAsWHkd0rAiCnNbrudCSlr8du5b56txJkKxWr-hIvWVjjxBzQO62gAQiimC_pjeQpoamsfPUkM9cVtMg5SuQVBWjpYNXjeyJ9T800Vk2D8kiX94rlcAT8vIfYGZixNecbauW1jAG8eJZz5AGwNXjjPw0ncQ15T-GtJu20oK8lqmdU6rjRgIYXfoRG9IXYwWnwb-XQVT0BxqESBLTAparyEWlc5riUysWL_WRYHf-vPCidPxq4e86-Ncr_y9tVANWm6kv70PGHTrg980oT2yTb1h95pmK4tEYSVsvkhQSN3xgKSxWRS_w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Rick and Morty\",\n    \"releasedYear\": 2013,\n    \"rating\": 9.1,\n    \"genres\": [\n        {\n            \"id\": 2,\n            \"name\": \"Adventure\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Animation\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Comedy\",\n            \"description\": \"\"\n        }\n    ],\n    \"director\": {\n        \"id\": 8,\n        \"firstName\": \"Dan\",\n        \"lastName\": \"Harmon\",\n        \"dob\": \"1973-01-03\",\n        \"gender\": \"MALE\",\n        \"biography\": \"Dan Harmon was born on January 3, 1973 in Milwaukee, Wisconsin, USA.\"\n    },\n    \"duration\": 127.0,\n    \"numberOfComments\": 0,\n    \"numberOfSeasons\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddTvShow",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{        \n    \"name\": \"Rick & Morty\",\n    \"releasedYear\": 2013,\n    \"rating\": 9.1,\n    \"genres\": [\n        {\n            \"id\": 2,\n            \"name\": \"Adventure\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Animation\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Comedy\",\n            \"description\": \"\"\n        }\n    ],\n    \"director\": {\n        \"id\": 8,\n        \"firstName\": \"Dan\",\n        \"lastName\": \"Harmon\",\n        \"dob\": \"1973-01-03\",\n        \"gender\": \"MALE\",\n        \"biography\": \"Dan Harmon was born on January 3, 1973 in Milwaukee, Wisconsin, USA.\"\n    },\n    \"duration\": 127.0,\n    \"numberOfComments\": 0,\n    \"numberOfSeasons\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteTvShow",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJueG40ZXhWUTdsZzdOYXhUd0c3YVlOYm4tMFdlTDlkaUU4ZDdZbkFjTzJVIn0.eyJleHAiOjE2NjkyNjcxMjksImlhdCI6MTY2OTI2NjgyOSwianRpIjoiMTY3Y2Y5NTItYjE3ZS00YzcxLTg3ZWYtMTcxMjMzMDZhMmIwIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL3NwcmluZy1yZWFsbSIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiIzNzVlMDIwOC04ZTQ2LTQ2YTYtOWJkOS0yNmIzNDlmM2VjMzIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3ZWItYXBwIiwic2Vzc2lvbl9zdGF0ZSI6IjM0YmM0YWVkLTljMDUtNGRlNi05MmRkLTFlZDk0NDMxYTMzYSIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwcmluZy1yZWFsbSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsid2ViLWFwcCI6eyJyb2xlcyI6WyJVU0VSIl19LCJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInZpZXctdXNlcnMiLCJxdWVyeS1ncm91cHMiLCJxdWVyeS11c2VycyJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoidXNlcjEgZiB1c2VyMSBsIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlcjEiLCJnaXZlbl9uYW1lIjoidXNlcjEgZiIsImZhbWlseV9uYW1lIjoidXNlcjEgbCIsImVtYWlsIjoidXNlcjFAbWFpbC5jb20ifQ.sM5R7C3Mqq61YAXtUaTPkd6_Sc5BiPP6HVyxRasTQMi8v4OSy8XhKRLW9_Zg9TA2Eftpk7B5zJMg9zTkmQKHEd9Vyr8b_9Mu_vczr6ujrVUC3y2KzxJVx8G2rQQ3opT7eEWut842OZUlchFY_72u60jqd84bOscCVpESLrNmg1QUdV_gwEB6lOojivFzmlzXbfY5ixP87np_r0a4v2UEFBZrv2VO99xcn0Sl7CojZTXdixZeD9jl_D9nwFWFLOO-DSDieZjUp6RPNqId4HeOe4Fj9I670jnSgLsXJBh5mn3zJKvRg1fa8GpBJMvesbMCzFyMcUl65s1gUIEMHMmZSw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
