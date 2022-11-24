@@ -7,9 +7,11 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Entity
+@Data
 @EqualsAndHashCode(callSuper = true)
 public class Actor extends Person {
 

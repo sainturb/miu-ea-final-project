@@ -28,7 +28,7 @@ public class ActorContoller {
     }
 
     @GetMapping("/{id}")
-    public Actor getActorById(@PathVariable long id) {
+    public Actor getActorById(@PathVariable Long id) {
         return actorService.getActorById(id);
     }
 
@@ -38,12 +38,12 @@ public class ActorContoller {
     }
 
     @DeleteMapping("/{id}")
-    public Boolean deleteActorById(@PathVariable long id) {
+    public Boolean deleteActorById(@PathVariable Long id) {
         return actorService.removeActor(id);
     }
 
     @PutMapping("/{id}")
-    public Actor updateActor(@PathVariable long id, @RequestBody Actor Actor) {
+    public Actor updateActor(@PathVariable Long id, @RequestBody Actor Actor) {
         return actorService.updateActor(id, Actor);
     }
 

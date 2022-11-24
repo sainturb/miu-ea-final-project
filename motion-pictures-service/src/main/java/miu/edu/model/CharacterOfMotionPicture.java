@@ -19,7 +19,7 @@ public class CharacterOfMotionPicture {
     private String name;
     private String additionalInformation;
 
-    @JsonBackReference(value = "motionPicture")
+    @JsonBackReference // (value = "motionPicture")
     @ManyToOne
     @MapsId("motionPictureId")
     private MotionPicture motionPicture;

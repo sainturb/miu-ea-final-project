@@ -7,13 +7,13 @@ import miu.edu.model.Director;
 public interface DirectorService {
     List<Director> getAllDirectors();
 
-    Director getDirectorById(long id);
+    Director getDirectorById(Long id);
 
     List<Director> findDirectorByFirstOrLastName(String directorname);
 
-    Director addDirector(Director Director);
+    Director addDirector(Director director);
 
-    boolean removeDirector(long id);
+    boolean removeDirector(Long id);
 
-    Director updateDirector(long id, Director Director);
+    Director updateDirector(Long id, Director director);
 }

@@ -28,7 +28,7 @@ public class DirectorContoller {
     }
 
     @GetMapping("/{id}")
-    public Director getDirectorById(@PathVariable long id) {
+    public Director getDirectorById(@PathVariable Long id) {
         return directorService.getDirectorById(id);
     }
 
@@ -38,18 +38,18 @@ public class DirectorContoller {
     }
 
     @PostMapping
-    public Director getAllDirectors(@RequestBody Director Director) {
-        return directorService.addDirector(Director);
+    public Director getAllDirectors(@RequestBody Director director) {
+        return directorService.addDirector(director);
     }
 
     @DeleteMapping("/{id}")
-    public Boolean deleteDirectorById(@PathVariable long id) {
+    public Boolean deleteDirectorById(@PathVariable Long id) {
         return directorService.removeDirector(id);
     }
 
     @PutMapping("/{id}")
-    public Director updateDirector(@PathVariable long id, @RequestBody Director Director) {
-        return directorService.updateDirector(id, Director);
+    public Director updateDirector(@PathVariable Long id, @RequestBody Director director) {
+        return directorService.updateDirector(id, director);
     }
 
 }
