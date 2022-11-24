@@ -24,7 +24,12 @@ spring:
     # generate-ddl: true
   sql:
     init:
-      mode: always      
+      mode: always
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVERS:localhost:9092}
+    consumer:
+      group-id: group-1
+      auto-offset-reset: latest
 management:
   endpoints:
     web:
