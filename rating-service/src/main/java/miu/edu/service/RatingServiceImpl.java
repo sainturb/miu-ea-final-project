@@ -41,10 +41,8 @@ public class RatingServiceImpl implements RatingService {
         try {
             String topic = rating.getMotionPictureType().toString(); // tvshow, movie
             List<Rating> all = ratingRepo.findAllByMotionPictureIdAndMotionPictureType(rating.getMotionPictureId(), rating.getMotionPictureType());
-            Double averageRate = all.stream().map(Rating::getRating).reduce((item1, item2) -> (item1 + item2) / 2).orElse(0.0);
-            RatingDTO averaged = new RatingDTO();
-            averaged.setAvgRating(averageRate);
-            averaged.setTotalNumberOfRating(all.size());
+            Double averageRate = all.stream().map(Rating::getRating).reduce((item1, item2) -> (item1 + item2) / 2).orElse(5.0);
+            RatingDTO averaged = new RatingDTO(rating.getMotionPictureId(), all.size() + 1, averageRate);
             ProducerRecord<String, RatingDTO> record = new ProducerRecord<>(topic, averaged);
             motionPicturesKafkaTemplate.send(record);
         } catch (Exception e) {

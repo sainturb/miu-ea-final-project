@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class RatingDTO {
 
     private Long motionPictureId;
-    private int totalNumberOfRating;
+    private Integer totalNumberOfRating;
     private Double avgRating;
 
 }

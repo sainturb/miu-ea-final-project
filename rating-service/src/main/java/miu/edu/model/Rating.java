@@ -11,7 +11,7 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long motionPictureId;
-    private Long userId; // -> String
+    private String userId;
     private Double rating;
 
     @Enumerated(EnumType.STRING)
