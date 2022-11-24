@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: comment-service
+  config:
+    import: optional:configserver:http://${CONFIG_SERVER}:8090
   # RabbitMQ
   rabbitmq:
     host: localhost
@@ -39,3 +41,20 @@ management:
   endpoint:
     health:
       show-details: always
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${DISCOVERY_SERVER}:8761/eureka/
+
+keycloak:
+  enabled: true
+  realm: spring-realm
+  auth-server-url: http://${KEYCLOAK_SERVER:localhost}:8080/auth
+  public-client: true
+  bearer-only: true
+  credentials:
+    secret: bbc02d7c-d18e-4fb7-8882-23165e849810
+  ssl-required: none
+  resource: web-app
+  use-resource-role-mappings: true
+
