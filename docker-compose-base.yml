@@ -166,7 +166,7 @@ services:
     ports:
       - 9411:9411
   rabbitmq:
-    platform: linux/amd64
+    #platform: linux/amd64
     image: rabbitmq:3-management
     extends:
       file: docker-compose-common.yml
