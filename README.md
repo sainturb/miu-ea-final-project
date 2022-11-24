@@ -159,7 +159,7 @@ Your project must have
 * ✅ Use inheritance for tv series and movies. 
 * ✅ Use appropriate hibernate fetch strategies.
 * Use ✅ RabbitMQ and ✅ Kafka.
-* ✅ Each micro-service must contain a Dockerfile to create a docker image.
+* ✅ Each microservice must contain a Dockerfile to create a docker image.
 * ✅ Implement Eventual Consistency.
 * ✅ Each service must have `data.sql` for dummy data.
 * ✅ Have 1 Kubernetes Deployment Configuration file.

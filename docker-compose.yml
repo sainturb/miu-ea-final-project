@@ -114,6 +114,9 @@ services:
     extends:
       file: docker-compose-base.yml
       service: gateway
+    depends_on:
+      - discovery
+      - keycloak
 
 
 networks:
