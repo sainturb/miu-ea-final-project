@@ -1,9 +1,14 @@
 spring:
   application:
     name: user-service
+  config:
+    import: optional:configserver:http://${CONFIG_SERVER:localhost}:8090/
   zipkin:
-    base-url: http://${ZIPKIN_SERVER:localhost}:${ZIPKIN_PORT:9411}
-
+    base-url: http://${ZIPKIN_SERVER:localhost}:${ZIPKIN_PORT:9411}/
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${DISCOVERY_SERVER}:8761/eureka/
 server:
   port: 8081
 

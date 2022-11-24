@@ -1,25 +1,62 @@
 {
 	"info": {
-		"_postman_id": "9705acc9-a339-497c-88ab-f53f447a9603",
+		"_postman_id": "d0fcce11-fe7d-467f-8c00-e3f3c73fd66b",
 		"name": "CS544 - User service",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "get users",
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.collectionVariables.set(\"access_token\", jsonData.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
-					"type": "oauth2",
-					"oauth2": {
-						"password": "user1",
-						"username": "user1",
-						"clientSecret": "bbc02d7c-d18e-4fb7-8882-23165e849810",
-						"clientId": "web-app",
-						"grant_type": "password_credentials",
-						"scope": "",
-						"accessTokenUrl": "http://localhost:8080/auth/realms/spring-realm/protocol/openid-connect/token",
-						"tokenName": "token",
-						"addTokenTo": "header"
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"user1\",\n    \"password\": \"user1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8081/oauth/authenticate"
+			},
+			"response": []
+		},
+		{
+			"name": "get users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.collectionVariables.set(\"user1id\", jsonData[0].id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
 					}
 				},
 				"method": "GET",
@@ -32,24 +69,76 @@
 			"name": "get user",
 			"request": {
 				"auth": {
-					"type": "oauth2",
-					"oauth2": {
-						"password": "user1",
-						"username": "user1",
-						"clientSecret": "bbc02d7c-d18e-4fb7-8882-23165e849810",
-						"clientId": "web-app",
-						"grant_type": "password_credentials",
-						"scope": "",
-						"accessTokenUrl": "http://localhost:8080/auth/realms/spring-realm/protocol/openid-connect/token",
-						"tokenName": "token",
-						"addTokenTo": "header"
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
 					}
 				},
 				"method": "GET",
 				"header": [],
-				"url": "http://localhost:8081/api/users/e0d4cc4d-97aa-417f-8a57-9efbf844e45c"
+				"url": "http://localhost:8081/api/users/{{user1id}}"
 			},
 			"response": []
+		},
+		{
+			"name": "user test",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8081/api/user/api-test"
+			},
+			"response": []
+		},
+		{
+			"name": "owner test",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8081/api/owner/api-test"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "access_token",
+			"value": ""
+		},
+		{
+			"key": "user1id",
+			"value": ""
 		}
 	]
 }

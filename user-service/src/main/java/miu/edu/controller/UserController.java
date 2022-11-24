@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import miu.edu.dto.UserDTO;
 import miu.edu.service.KeycloakService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,14 @@ public class UserController {
     private final KeycloakService keycloakService;
 
     private final ModelMapper mapper;
+
+    @GetMapping("user/api-test")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public void userTest() {}
+
+    @GetMapping("owner/api-test")
+    @PreAuthorize("hasRole('ROLE_OWNER')")
+    public void ownerTest() {}
 
     @GetMapping("users")
     public List<UserDTO> getUsers() {

@@ -17,6 +17,8 @@ services:
     extends:
       file: docker-compose-base.yml
       service: user-service
+    depends_on:
+      - discovery
   movie-service:
     extends:
       file: docker-compose-base.yml

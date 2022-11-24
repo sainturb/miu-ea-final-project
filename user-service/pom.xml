@@ -23,10 +23,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-oauth2-client</artifactId>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-sleuth-zipkin</artifactId>
@@ -59,15 +55,15 @@
             <version>14.0.0</version>
         </dependency>
         <dependency>
-            <groupId>org.keycloak</groupId>
-            <artifactId>keycloak-admin-client</artifactId>
-            <version>14.0.0</version>
-        </dependency>
-        <dependency>
             <groupId>org.keycloak.bom</groupId>
             <artifactId>keycloak-adapter-bom</artifactId>
             <version>14.0.0</version>
             <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-admin-client</artifactId>
+            <version>14.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
