@@ -12,11 +12,13 @@
 
 ## Specifications
 
-<span style='background: rgba(255, 191, 0, 0.2); padding: 4px; border-radius: 3px'>Tested resourse specs</span>
+<span style='background: rgba(255, 191, 0, 0.2); padding: 4px; border-radius: 3px'>Tested environment specs</span>
 
+* M1 chip mac
 * 4 Cpus
 * 8 GB Memory
 * 1 GB Swap
+* loading time less than 2 minutes
 
 ## Running instruction
 
@@ -27,9 +29,6 @@ docker-compose up -d # detachable docker run script
 
 docker-compose down # turn down all services
 ```
-
-* <span style='background: rgba(255, 191, 0, 0.2); padding: 2px; border-radius: 3px'>Discovery service will start in about 6-7 minutes</span>
-* <span style='background: rgba(255, 191, 0, 0.2); padding: 2px; border-radius: 3px'>All 5 services and gateway will start in about 10-12 minutes</span>
 
 ## Users
 
@@ -107,6 +106,16 @@ docker-compose down # turn down all services
 * Kafka UI &rarr; <a href='http://localhost:8089' target='_blank'>Click here</a>
 * RabbitMQ UI &rarr; <a href='http://localhost:5673' target='_blank'>Click here</a>
 * Keycloak UI &rarr; <a href='http://localhost:8080' target='_blank'>Click here</a>
+
+# Troubleshootings
+
+## AMD64 architecture type
+
+If you are running docker-compose script on macbook pro that has m1 chip and set docker default platform to linux/amd64 it will take some time to load everything. Instead, unset default platform value and run docker-compose script to get the best result.
+
+```shell
+!don't set DOCKER_DEFAULT_PLATFORM=linux/amd64 # on M1 Macs will takes 10 minutes to run every service
+```
 
 # Requirements
 
