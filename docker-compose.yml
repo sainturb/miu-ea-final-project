@@ -15,14 +15,10 @@ services:
     extends:
       file: docker-compose-base.yml
       service: config
-    depends_on:
-      - zipkin
   discovery:
     extends:
       file: docker-compose-base.yml
       service: discovery
-    depends_on:
-      - config
   keycloak:
     extends:
       file: docker-compose-base.yml
@@ -61,6 +57,8 @@ services:
       service: user-service
     depends_on:
       - discovery
+      - zipkin
+      - config
       - keycloak
   movie-service:
     extends:
@@ -68,6 +66,8 @@ services:
       service: movie-service
     depends_on:
       - discovery
+      - zipkin
+      - config
       - keycloak
   tvshow-service:
     extends:
@@ -75,6 +75,8 @@ services:
       service: tvshow-service
     depends_on:
       - discovery
+      - zipkin
+      - config
       - keycloak
   comment-service:
     extends:
@@ -82,6 +84,8 @@ services:
       service: comment-service
     depends_on:
       - discovery
+      - zipkin
+      - config
       - keycloak
   rating-service:
     extends:
@@ -89,6 +93,8 @@ services:
       service: rating-service
     depends_on:
       - discovery
+      - zipkin
+      - config
       - keycloak
   rating-db:
     extends:
@@ -116,7 +122,8 @@ services:
       service: gateway
     depends_on:
       - discovery
-      - keycloak
+      - zipkin
+      - config
 
 
 networks:

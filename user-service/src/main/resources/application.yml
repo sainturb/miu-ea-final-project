@@ -1,6 +1,12 @@
 spring:
   application:
     name: user-service
+  cloud:
+    config:
+      fail-fast: true
+      retry:
+        max-attempts: 300
+        max-interval: 20000
   config:
     import: optional:configserver:http://${CONFIG_SERVER:localhost}:8090/
   zipkin:
