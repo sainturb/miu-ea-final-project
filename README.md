@@ -24,10 +24,12 @@
 sh build.sh # build jar files and build images for each service
 
 docker-compose up -d # detachable docker run script
+
+docker-compose down # turn down all services
 ```
 
 * <span style='background: rgba(255, 191, 0, 0.2); padding: 2px; border-radius: 3px'>Discovery service will start in about 6-7 minutes</span>
-* <span style='background: rgba(255, 191, 0, 0.2); padding: 2px; border-radius: 3px'>All 5 services will start in about 10-12 minutes</span>
+* <span style='background: rgba(255, 191, 0, 0.2); padding: 2px; border-radius: 3px'>All 5 services and gateway will start in about 10-12 minutes</span>
 
 ## Users
 
