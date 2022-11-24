@@ -1,18 +1,28 @@
 version: '3.8'
 
 services:
-  config:
-    extends:
-      file: docker-compose-base.yml
-      service: config
-  discovery:
-    extends:
-      file: docker-compose-base.yml
-      service: discovery
   zipkin:
     extends:
       file: docker-compose-base.yml
       service: zipkin
+    depends_on:
+      - movie-db
+      - tvshow-db
+      - rating-db
+      - comment-db
+      - keycloak-db
+  config:
+    extends:
+      file: docker-compose-base.yml
+      service: config
+    depends_on:
+      - zipkin
+  discovery:
+    extends:
+      file: docker-compose-base.yml
+      service: discovery
+    depends_on:
+      - config
   keycloak:
     extends:
       file: docker-compose-base.yml
@@ -21,10 +31,6 @@ services:
       - keycloak-db
     links:
       - keycloak-db:database
-  keycloak-db:
-    extends:
-      file: docker-compose-base.yml
-      service: keycloak-db
   rabbitmq:
     extends:
       file: docker-compose-base.yml
@@ -56,82 +62,54 @@ services:
     depends_on:
       - discovery
       - keycloak
-      - config
-      - zipkin
   movie-service:
     extends:
       file: docker-compose-base.yml
       service: movie-service
     depends_on:
-      - movie-db
       - discovery
-      - rabbitmq
-      - kafka
       - keycloak
-      - config
-      - zipkin
-    links:
-      - movie-db:database
-  movie-db:
-    extends:
-      file: docker-compose-base.yml
-      service: movie-db
   tvshow-service:
     extends:
       file: docker-compose-base.yml
       service: tvshow-service
     depends_on:
-      - tvshow-db
       - discovery
-      - rabbitmq
-      - kafka
       - keycloak
-      - config
-      - zipkin
-    links:
-      - tvshow-db:database
-  tvshow-db:
-    extends:
-      file: docker-compose-base.yml
-      service: tvshow-db
   comment-service:
     extends:
       file: docker-compose-base.yml
       service: comment-service
     depends_on:
-      - comment-db
       - discovery
-      - rabbitmq
       - keycloak
-      - config
-    links:
-      - comment-db:database
-  comment-db:
-    extends:
-      file: docker-compose-base.yml
-      service: comment-db
   rating-service:
     extends:
       file: docker-compose-base.yml
       service: rating-service
     depends_on:
-      - rating-db
       - discovery
-      - kafka
       - keycloak
-      - config
-      - zipkin
-    links:
-      - rating-db:database
-      - discovery
-      - kafka
-      - keycloak
-      - config
-      - zipkin
   rating-db:
     extends:
       file: docker-compose-base.yml
       service: rating-db
+  tvshow-db:
+    extends:
+      file: docker-compose-base.yml
+      service: tvshow-db
+  comment-db:
+    extends:
+      file: docker-compose-base.yml
+      service: comment-db
+  movie-db:
+    extends:
+      file: docker-compose-base.yml
+      service: movie-db
+  keycloak-db:
+    extends:
+      file: docker-compose-base.yml
+      service: keycloak-db
   gateway:
     extends:
       file: docker-compose-base.yml

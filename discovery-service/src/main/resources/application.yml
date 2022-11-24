@@ -5,9 +5,9 @@ server:
   port: 8761
 
 eureka:
-#  server:
+  server:
 #    renewalPercentThreshold: 0.5
-#    enableSelfPreservation: true
+    enableSelfPreservation: true
   client:
     register-with-eureka: false
     fetch-registry: false

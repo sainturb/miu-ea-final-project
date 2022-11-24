@@ -1,6 +1,112 @@
+# Documentation
+
 ## Architecture image:
 
 ![alt text](assignment.drawio.png)
+
+## Prerequisites
+
+* Docker Desktop or Docker Environment
+* Maven 3.8.3
+* Java JDK 11+
+
+## Specifications
+
+<span style='background: rgba(255, 191, 0, 0.2); padding: 4px; border-radius: 3px'>Tested resourse specs</span>
+
+* 4 Cpus
+* 8 GB Memory
+* 1 GB Swap
+
+## Running instruction
+
+```shell
+sh build.sh # build jar files and build images for each service
+
+docker-compose up -d # detachable docker run script
+```
+
+* <span style='background: rgba(255, 191, 0, 0.2); padding: 2px; border-radius: 3px'>Discovery service will start in about 6-7 minutes</span>
+* <span style='background: rgba(255, 191, 0, 0.2); padding: 2px; border-radius: 3px'>All 5 services will start in about 10-12 minutes</span>
+
+## Users
+
+<table>
+<tr>
+<th colspan="2">System Users</th>
+</tr>
+<tr>
+<th>username</th>
+<th>password</th>
+</tr>
+<tr>
+<td>user1</td>
+<td>user1</td>
+</tr>
+<tr>
+<td>user2</td>
+<td>user2</td>
+</tr>
+<tr>
+<td>user3</td>
+<td>user3</td>
+</tr>
+<tr>
+<td>owner1</td>
+<td>owner1</td>
+</tr>
+<tr>
+<td>owner2</td>
+<td>owner2</td>
+</tr>
+<tr>
+<td>owner3</td>
+<td>owner3</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<th colspan="2">RabbitMQ</th>
+</tr>
+<tr>
+<th>username</th>
+<th>password</th>
+</tr>
+<tr>
+<td>guest</td>
+<td>guest</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<th colspan="2">Keycloak Admin</th>
+</tr>
+<tr>
+<th>username</th>
+<th>password</th>
+</tr>
+<tr>
+<td>admin</td>
+<td>Pa55w0rd</td>
+</tr>
+</table>
+
+* Discovery server &rarr; <a href='http://localhost:8761' target='_blank'>Click here</a>
+* Config server
+  * User service config &rarr; <a href='http://localhost:8090/user-service/default' target='_blank'>Click here</a>
+  * Movie service config &rarr; <a href='http://localhost:8090/movie-service/default' target='_blank'>Click here</a>
+  * TV Show service config &rarr; <a href='http://localhost:8090/tvshow-service/default' target='_blank'>Click here</a>
+  * Rating service config &rarr; <a href='http://localhost:8090/rating-service/default' target='_blank'>Click here</a>
+  * Comment service config &rarr; <a href='http://localhost:8090/comment-service/default' target='_blank'>Click here</a>
+* Zipkin server &rarr; <a href='http://localhost:9411' target='_blank'>Click here</a>
+* Gateway &rarr; <a href='http://localhost' target='_blank'>Click here</a>
+* Kafka UI &rarr; <a href='http://localhost:8089' target='_blank'>Click here</a>
+* RabbitMQ UI &rarr; <a href='http://localhost:5673' target='_blank'>Click here</a>
+* Keycloak UI &rarr; <a href='http://localhost:8080' target='_blank'>Click here</a>
+
+# Requirements
 
 ## Movie Rating Portal
  
@@ -74,9 +180,7 @@ Your project must have
 
 #### Important Notes
 ---
- * You are not allowed to share codes with your classmates. If detected, you will get NC.
- 
+* You are not allowed to share codes with your classmates. If detected, you will get NC.
 * Remember to respect the code honor submission policy. All written code must be original. Presenting something as one’s own work when it came from another source is plagiarism and is forbidden.
-    
 * Plagiarism is a very serious thing in all American academic institutions and is guarded against vigilantly by every professor.
  
