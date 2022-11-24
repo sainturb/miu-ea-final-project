@@ -1,14 +1,15 @@
 version: '3'
 services:
   common:
-    deploy:
-      resources:
-        limits:
-          cpus: 0.30
-          memory: 256M
-        reservations:
-          cpus: 0.15
-          memory: 128M
+    restart: always
+#    deploy:
+#      resources:
+#        limits:
+#          cpus: 0.30
+#          memory: 256M
+#        reservations:
+#          cpus: 0.15
+#          memory: 128M
     networks:
       - all
     environment:

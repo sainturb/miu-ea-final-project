@@ -19,12 +19,23 @@ services:
       service: user-service
     depends_on:
       - discovery
+      - keycloak
+      - config
+      - zipkin
   movie-service:
     extends:
       file: docker-compose-base.yml
       service: movie-service
     depends_on:
       - movie-db
+      - discovery
+      - rabbitmq
+      - kafka
+      - keycloak
+      - config
+      - zipkin
+    links:
+      - movie-db:database
   movie-db:
     extends:
       file: docker-compose-base.yml
@@ -35,6 +46,14 @@ services:
       service: tvshow-service
     depends_on:
       - tvshow-db
+      - discovery
+      - rabbitmq
+      - kafka
+      - keycloak
+      - config
+      - zipkin
+    links:
+      - tvshow-db:database
   tvshow-db:
     extends:
       file: docker-compose-base.yml
@@ -45,6 +64,12 @@ services:
       service: comment-service
     depends_on:
       - comment-db
+      - discovery
+      - rabbitmq
+      - keycloak
+      - config
+    links:
+      - comment-db:database
   comment-db:
     extends:
       file: docker-compose-base.yml
@@ -55,6 +80,13 @@ services:
       service: rating-service
     depends_on:
       - rating-db
+      - discovery
+      - kafka
+      - keycloak
+      - config
+      - zipkin
+    links:
+      - rating-db:database
   rating-db:
     extends:
       file: docker-compose-base.yml

@@ -7,6 +7,11 @@ services:
     extends:
       file: docker-compose-common.yml
       service: common
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8090" ]
+      interval: 1s
+      timeout: 10s
+      retries: 30
   gateway:
     image: gateway-service
     extends:
@@ -21,6 +26,11 @@ services:
       service: common
     ports:
       - 8761:8761
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8761" ]
+      interval: 1s
+      timeout: 10s
+      retries: 30
   user-service:
     image: user-service
     ports:
@@ -140,6 +150,11 @@ services:
       service: common
     ports:
       - 9411:9411
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9411" ]
+      interval: 1s
+      timeout: 10s
+      retries: 30
   rabbitmq:
     platform: linux/amd64
     image: rabbitmq:3-management
@@ -149,6 +164,11 @@ services:
     ports:
       - 5672:5672
       - 5673:15672
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:15672" ]
+      interval: 1s
+      timeout: 10s
+      retries: 30
   kafka:
     image: confluentinc/cp-kafka:5.5.8
     ports:
@@ -156,6 +176,11 @@ services:
     extends:
       file: docker-compose-common.yml
       service: common
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9092" ]
+      interval: 1s
+      timeout: 10s
+      retries: 30
   zookeeper:
     image: confluentinc/cp-zookeeper:5.5.8
     extends:
