@@ -5,14 +5,50 @@ services:
     extends:
       file: docker-compose-base.yml
       service: config
-  gateway:
-    extends:
-      file: docker-compose-base.yml
-      service: gateway
   discovery:
     extends:
       file: docker-compose-base.yml
       service: discovery
+  zipkin:
+    extends:
+      file: docker-compose-base.yml
+      service: zipkin
+  keycloak:
+    extends:
+      file: docker-compose-base.yml
+      service: keycloak
+    depends_on:
+      - keycloak-db
+    links:
+      - keycloak-db:database
+  keycloak-db:
+    extends:
+      file: docker-compose-base.yml
+      service: keycloak-db
+  rabbitmq:
+    extends:
+      file: docker-compose-base.yml
+      service: rabbitmq
+  kafka:
+    platform: linux/amd64
+    extends:
+      file: docker-compose-base.yml
+      service: kafka
+    depends_on:
+      - zookeeper
+  zookeeper:
+    platform: linux/amd64
+    extends:
+      file: docker-compose-base.yml
+      service: zookeeper
+  kafka-ui:
+    platform: linux/amd64
+    extends:
+      file: docker-compose-base.yml
+      service: kafka-ui
+    depends_on:
+      - zookeeper
+      - kafka
   user-service:
     extends:
       file: docker-compose-base.yml
@@ -87,48 +123,20 @@ services:
       - zipkin
     links:
       - rating-db:database
+      - discovery
+      - kafka
+      - keycloak
+      - config
+      - zipkin
   rating-db:
     extends:
       file: docker-compose-base.yml
       service: rating-db
-  keycloak:
+  gateway:
     extends:
       file: docker-compose-base.yml
-      service: keycloak
-    depends_on:
-      - keycloak-db
-  keycloak-db:
-    extends:
-      file: docker-compose-base.yml
-      service: keycloak-db
-  zipkin:
-    extends:
-      file: docker-compose-base.yml
-      service: zipkin
-  rabbitmq:
-    extends:
-      file: docker-compose-base.yml
-      service: rabbitmq
-  kafka:
-    platform: linux/amd64
-    extends:
-      file: docker-compose-base.yml
-      service: kafka
-    depends_on:
-      - zookeeper
-  zookeeper:
-    platform: linux/amd64
-    extends:
-      file: docker-compose-base.yml
-      service: zookeeper
-  kafka-ui:
-    platform: linux/amd64
-    extends:
-      file: docker-compose-base.yml
-      service: kafka-ui
-    depends_on:
-      - zookeeper
-      - kafka
+      service: gateway
+
 
 networks:
   all:

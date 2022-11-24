@@ -34,7 +34,7 @@ Your project must have
 ####  Functional  Requirements
 --- 
 * ✅ Users can register to the system.
-* ⚠️ Owners can create/remove/update movies and tv series.
+* ✅ Owners can create/remove/update movies and tv series.
 * ✅ User can filter movies or tv series by :
     * ✅ released year,
     * ✅ rating,
@@ -42,8 +42,8 @@ Your project must have
     * ✅ director,
     * ✅ actor/actress
     * ✅ duration.
-* ⚠️ Users can create/remove/update comments for movies/tv series
-* ⚠️ Users can rate movies/tv series.
+* ✅ Users can create/remove/update comments for movies/tv series
+* ✅ Users can rate movies/tv series.
 	* Rating is between 1 and 5.
 * ⚠️ Users can add/remove movies/tv series to/from their favorite lists.
 	* Users can have multiple favorite lists.
@@ -57,7 +57,7 @@ Your project must have
 * ✅ Implement Eventual Consistency.
 * ✅ Each service must have `data.sql` for dummy data.
 * ✅ Have 1 Kubernetes Deployment Configuration file.
-* ⚠️ Create a Postman collection for each endpoint.
+* ✅ Create a Postman collection for each endpoint.
 * ⛔️ Create API documentation with Swagger.
 * ✅ Prepare a docker compose file to run your project.
 * ✅ Use Circuit Breaker pattern for 5 methods.

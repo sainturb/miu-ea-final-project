@@ -150,11 +150,6 @@ services:
       service: common
     ports:
       - 9411:9411
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:9411" ]
-      interval: 1s
-      timeout: 10s
-      retries: 30
   rabbitmq:
     platform: linux/amd64
     image: rabbitmq:3-management
@@ -177,10 +172,10 @@ services:
       file: docker-compose-common.yml
       service: common
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:9092" ]
-      interval: 1s
+      test: [ "CMD", "kafka-topics.sh", "--list", "--zookeeper", "zookeeper:2181" ]
+      interval: 30s
       timeout: 10s
-      retries: 30
+      retries: 4
   zookeeper:
     image: confluentinc/cp-zookeeper:5.5.8
     extends:
