@@ -1,17 +1,18 @@
 package miu.edu.controller;
 
 import lombok.RequiredArgsConstructor;
+import miu.edu.dto.FavouriteRequestDTO;
 import miu.edu.dto.UserDTO;
+import miu.edu.model.Favourite;
+import miu.edu.service.FavouriteService;
 import miu.edu.service.KeycloakService;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,6 +23,7 @@ public class UserController {
 
     private final KeycloakService keycloakService;
 
+    private final FavouriteService favouriteService;
     private final ModelMapper mapper;
 
     @GetMapping("user/api-test")
@@ -43,6 +45,21 @@ public class UserController {
     @GetMapping("users/{id}")
     public UserDTO getUserInfo(@PathVariable String id) {
         return mapper.map(this.keycloakService.getUser(id), UserDTO.class);
+    }
+
+    @PostMapping("users/favourites")
+    public Favourite addFavourite(@RequestBody FavouriteRequestDTO body, Principal principal) {
+        return favouriteService.add(body.getId(), body.getType(), body.getName(), principal.getName());
+    }
+
+    @GetMapping("users/favourites")
+    public List getFavourites(Principal principal) {
+        return favouriteService.get(principal.getName());
+    }
+
+    @DeleteMapping("users/favourites/{id}")
+    public void deleteFavourite(@PathVariable Long id, Principal principal) {
+        favouriteService.delete(id, principal.getName());
     }
 
     @PostConstruct

@@ -96,6 +96,10 @@ services:
       - zipkin
       - config
       - keycloak
+  user-db:
+    extends:
+      file: docker-compose-base.yml
+      service: user-db
   rating-db:
     extends:
       file: docker-compose-base.yml
@@ -122,6 +126,7 @@ services:
       service: gateway
     depends_on:
       - discovery
+      - user-service
       - zipkin
       - config
 

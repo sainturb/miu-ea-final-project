@@ -68,6 +68,18 @@ services:
       service: common
     environment:
       DATABASE_HOST: rating-db
+  user-db:
+    image: postgres
+    extends:
+      file: docker-compose-common.yml
+      service: common
+    environment:
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}'" ]
+      interval: 30s
+      timeout: 60s
+      retries: 5
   tvshow-db:
     image: postgres
     extends:
