@@ -23,6 +23,8 @@
 ## Running instruction
 
 ```shell
+unset DOCKER_DEFAULT_PLATFORM # optional: if you run on m1 chip mac
+
 sh build.sh # build jar files and build images for each service
 
 docker-compose up -d # detachable docker run script
