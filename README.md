@@ -31,6 +31,80 @@ docker-compose up -d # detachable docker run script
 
 docker-compose down # turn down all services
 ```
+## Services and Servers
+
+<table>
+<tr>
+<th>name</th>
+<th>port</th>
+<th>link</th>
+</tr>
+<tr>
+<td>gateway</td>
+<td>80</td>
+<td><a href='http://localhost' target='_blank'>Click here</a></td>
+</tr>
+<tr>
+<td>keycloak server</td>
+<td>8080</td>
+<td><a href='http://localhost:8080' target='_blank'>Click here</a></td>
+</tr>
+<tr>
+<td>user service</td>
+<td>8081</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>movie service</td>
+<td>8082</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>tv show service</td>
+<td>8083</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>comment service</td>
+<td>8084</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>rating service</td>
+<td>8085</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>kafka ui</td>
+<td>8089</td>
+<td><a href='http://localhost:8089' target='_blank'>Click here</a></td>
+</tr>
+<tr>
+<td>config server</td>
+<td>8090</td>
+<td>
+<div>User service config &rarr; <a href='http://localhost:8090/user-service/default' target='_blank'>Click here</a></div>
+<div>Movie service config &rarr; <a href='http://localhost:8090/movie-service/default' target='_blank'>Click here</a></div>
+<div>TV Show service config &rarr; <a href='http://localhost:8090/tvshow-service/default' target='_blank'>Click here</a></div>
+<div>Rating service config &rarr; <a href='http://localhost:8090/rating-service/default' target='_blank'>Click here</a></div>
+<div>Comment service config &rarr; <a href='http://localhost:8090/comment-service/default' target='_blank'>Click here</a></td></div>
+</tr>
+<tr>
+<td>registry server</td>
+<td>8761</td>
+<td><a href='http://localhost:8761' target='_blank'>Click here</a></td>
+</tr>
+<tr>
+<td>zipkin</td>
+<td>9411</td>
+<td><a href='http://localhost:9411' target='_blank'>Click here</a></td>
+</tr>
+<tr>
+<td>rabbitmq ui</td>
+<td>5673</td>
+<td><a href='http://localhost:5673' target='_blank'>Click here</a></td>
+</tr>
+</table>
 
 ## Users
 
@@ -96,18 +170,7 @@ docker-compose down # turn down all services
 </tr>
 </table>
 
-* Discovery server &rarr; <a href='http://localhost:8761' target='_blank'>Click here</a>
-* Config server
-  * User service config &rarr; <a href='http://localhost:8090/user-service/default' target='_blank'>Click here</a>
-  * Movie service config &rarr; <a href='http://localhost:8090/movie-service/default' target='_blank'>Click here</a>
-  * TV Show service config &rarr; <a href='http://localhost:8090/tvshow-service/default' target='_blank'>Click here</a>
-  * Rating service config &rarr; <a href='http://localhost:8090/rating-service/default' target='_blank'>Click here</a>
-  * Comment service config &rarr; <a href='http://localhost:8090/comment-service/default' target='_blank'>Click here</a>
-* Zipkin server &rarr; <a href='http://localhost:9411' target='_blank'>Click here</a>
-* Gateway &rarr; <a href='http://localhost' target='_blank'>Click here</a>
-* Kafka UI &rarr; <a href='http://localhost:8089' target='_blank'>Click here</a>
-* RabbitMQ UI &rarr; <a href='http://localhost:5673' target='_blank'>Click here</a>
-* Keycloak UI &rarr; <a href='http://localhost:8080' target='_blank'>Click here</a>
+
 
 # Troubleshootings
 
