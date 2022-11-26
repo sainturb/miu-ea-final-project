@@ -1,0 +1,1549 @@
+{
+	"info": {
+		"_postman_id": "cca40047-42e9-4b1a-a01a-2fdbaab89f82",
+		"name": "CS544 - All Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.collectionVariables.set(\"access_token\", jsonData.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"user1\",\n    \"password\": \"user1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost/user-service/oauth/authenticate"
+			},
+			"response": []
+		},
+		{
+			"name": "get users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.collectionVariables.set(\"user1id\", jsonData[0].id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost/user-service/api/users"
+			},
+			"response": []
+		},
+		{
+			"name": "get user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost/user-service/api/users/{{user1id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "user test",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost/user-service/api/user/api-test"
+			},
+			"response": []
+		},
+		{
+			"name": "owner test",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost/user-service/api/owner/api-test"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.collectionVariables.set(\"access_token\", jsonData.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"user1\",\n    \"password\": \"user1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost/user-service/oauth/authenticate"
+			},
+			"response": []
+		},
+		{
+			"name": "GetMovies",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "localhost/movie-service/api/v1/movies"
+			},
+			"response": []
+		},
+		{
+			"name": "GetMovieById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "localhost/movie-service/api/v1/movies/2"
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByReleasedYearEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/movie-service/api/v1/movies/filter?releasedyear=2022",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"movie-service",
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "releasedyear",
+							"value": "2022"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByRatingGreaterThan",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/movie-service/api/v1/movies/filter?minrating=7.1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"movie-service",
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "minrating",
+							"value": "7.1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByRatingLessThan",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/movie-service/api/v1/movies/filter?maxrating=7.1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"movie-service",
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "maxrating",
+							"value": "7.1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByRatingBetween",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/movie-service/api/v1/movies/filter?minrating=7.0&maxrating=8.0",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"movie-service",
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "minrating",
+							"value": "7.0"
+						},
+						{
+							"key": "maxrating",
+							"value": "8.0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByRatingEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/movie-service/api/v1/movies/filter?rating=7.3",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"movie-service",
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "rating",
+							"value": "7.3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByGenreNameEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/movie-service/api/v1/movies/filter?genre_name=Action",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"movie-service",
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "genre_name",
+							"value": "Action"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByGenreIdEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/movie-service/api/v1/movies/filter?genre_id=1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"movie-service",
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "genre_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByDirectorIdEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/movie-service/api/v1/movies/filter?director_id=1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"movie-service",
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "director_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByDurationGreaterThan",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/movie-service/api/v1/movies/filter?minduration=120",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"movie-service",
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "minduration",
+							"value": "120"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByDurationLessThan",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/movie-service/api/v1/movies/filter?maxduration=150",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"movie-service",
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "maxduration",
+							"value": "150"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByDurationBetween",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/movie-service/api/v1/movies/filter?minduration=150&maxduration=200",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"movie-service",
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "minduration",
+							"value": "150"
+						},
+						{
+							"key": "maxduration",
+							"value": "200"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByDurationEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/movie-service/api/v1/movies/filter?duration=127",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"movie-service",
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "duration",
+							"value": "127"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMoviesFilterByActorIdEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/movie-service/api/v1/movies/filter?actor_id=3",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"movie-service",
+						"api",
+						"v1",
+						"movies",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "actor_id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddDirector",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Jaume\",\n    \"lastName\": \"Collet-Serra\",\n    \"dob\": \"1974-03-23\",\n    \"gender\": \"MALE\",\n    \"biography\": \"Jaume Collet-Serra was born on March 23, 1974 in Barcelona, Barcelona, Catalonia, Spain.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost/movie-service/api/v1/directors"
+			},
+			"response": []
+		},
+		{
+			"name": "AddMovie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{        \n    \"name\": \"Black Ada\",\n    \"releasedYear\": 2022,\n    \"rating\": 6.9,\n    \"genres\": [\n        {\n            \"id\": 1,\n            \"name\": \"Action\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Adventure\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Fantasy\",\n            \"description\": \"\"\n        }\n    ],\n    \"director\": {\n        \"id\": 8,\n        \"firstName\": \"Jaume\",\n        \"lastName\": \"Collet-Serra\",\n        \"dob\": \"1974-03-23\",\n        \"gender\": \"MALE\",\n        \"biography\": \"Jaume Collet-Serra was born on March 23, 1974 in Barcelona, Barcelona, Catalonia, Spain.\"\n    },\n    \"duration\": 125.0,\n    \"numberOfComments\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost/movie-service/api/v1/movies"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateMovie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{        \n    \"name\": \"Black Adam\",\n    \"releasedYear\": 2022,\n    \"rating\": 6.9,\n    \"genres\": [\n        {\n            \"id\": 1,\n            \"name\": \"Action\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Adventure\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Fantasy\",\n            \"description\": \"\"\n        }\n    ],\n    \"director\": {\n        \"id\": 8,\n        \"firstName\": \"Jaume\",\n        \"lastName\": \"Collet-Serra\",\n        \"dob\": \"1974-03-23\",\n        \"gender\": \"MALE\",\n        \"biography\": \"Jaume Collet-Serra was born on March 23, 1974 in Barcelona, Barcelona, Catalonia, Spain.\"\n    },\n    \"duration\": 125.0,\n    \"numberOfComments\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost/movie-service/api/v1/movies/3"
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteMovie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost/movie-service/api/v1/movies/3"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.collectionVariables.set(\"access_token\", jsonData.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"user1\",\n    \"password\": \"user1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost/user-service/oauth/authenticate"
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShows",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "localhost/tvshow-service/api/v1/tvshows"
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "localhost/tvshow-service/api/v1/tvshows/1"
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByReleasedYearEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/api/v1/tvshows/filter?releasedyear=2011",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "releasedyear",
+							"value": "2011"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByRatingGreaterThan",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/tvshow-service/api/v1/tvshows/filter?minrating=7.1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tvshow-service",
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "minrating",
+							"value": "7.1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByRatingLessThan",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/tvshow-service/api/v1/tvshows/filter?maxrating=9.8",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tvshow-service",
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "maxrating",
+							"value": "9.8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByRatingBetween",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/tvshow-service/api/v1/tvshows/filter?minrating=7.0&maxrating=9.3",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tvshow-service",
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "minrating",
+							"value": "7.0"
+						},
+						{
+							"key": "maxrating",
+							"value": "9.3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByRatingEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/tvshow-service/api/v1/tvshows/filter?rating=9.5",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tvshow-service",
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "rating",
+							"value": "9.5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByGenreNameEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/tvshow-service/api/v1/tvshows/filter?genre_name=Action",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tvshow-service",
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "genre_name",
+							"value": "Action"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByGenreIdEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/tvshow-service/api/v1/tvshows/filter?genre_id=1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tvshow-service",
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "genre_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByDirectorIdEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/tvshow-service/api/v1/tvshows/filter?director_id=1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tvshow-service",
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "director_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByDurationGreaterThan",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/tvshow-service/api/v1/tvshows/filter?minduration=120",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tvshow-service",
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "minduration",
+							"value": "120"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByDurationLessThan",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/tvshow-service/api/v1/tvshows/filter?maxduration=6000",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tvshow-service",
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "maxduration",
+							"value": "6000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByDurationBetween",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/tvshow-service/api/v1/tvshows/filter?minduration=4000&maxduration=6000",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tvshow-service",
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "minduration",
+							"value": "4000"
+						},
+						{
+							"key": "maxduration",
+							"value": "6000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByDurationEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/tvshow-service/api/v1/tvshows/filter?duration=4214",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tvshow-service",
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "duration",
+							"value": "4214"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTvShowsFilterByActorIdEquals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/tvshow-service/api/v1/tvshows/filter?actor_id=3",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tvshow-service",
+						"api",
+						"v1",
+						"tvshows",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "actor_id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddDirector",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n    \"firstName\": \"Dan\",\n    \"lastName\": \"Harmon\",\n    \"dob\": \"1973-01-03\",\n    \"gender\": \"MALE\",\n    \"biography\": \"Dan Harmon was born on January 3, 1973 in Milwaukee, Wisconsin, USA.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost/tvshow-service/api/v1/directors"
+			},
+			"response": []
+		},
+		{
+			"name": "AddTvShow",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Rick and Morty\",\n    \"releasedYear\": 2013,\n    \"rating\": 9.1,\n    \"genres\": [\n        {\n            \"id\": 2,\n            \"name\": \"Adventure\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Animation\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Comedy\",\n            \"description\": \"\"\n        }\n    ],\n    \"director\": {\n        \"id\": 8,\n        \"firstName\": \"Dan\",\n        \"lastName\": \"Harmon\",\n        \"dob\": \"1973-01-03\",\n        \"gender\": \"MALE\",\n        \"biography\": \"Dan Harmon was born on January 3, 1973 in Milwaukee, Wisconsin, USA.\"\n    },\n    \"duration\": 127.0,\n    \"numberOfComments\": 0,\n    \"numberOfSeasons\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost/tvshow-service/api/v1/tvshows"
+			},
+			"response": []
+		},
+		{
+			"name": "AddTvShow",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{        \n    \"name\": \"Rick & Morty\",\n    \"releasedYear\": 2013,\n    \"rating\": 9.1,\n    \"genres\": [\n        {\n            \"id\": 2,\n            \"name\": \"Adventure\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Animation\",\n            \"description\": \"\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Comedy\",\n            \"description\": \"\"\n        }\n    ],\n    \"director\": {\n        \"id\": 8,\n        \"firstName\": \"Dan\",\n        \"lastName\": \"Harmon\",\n        \"dob\": \"1973-01-03\",\n        \"gender\": \"MALE\",\n        \"biography\": \"Dan Harmon was born on January 3, 1973 in Milwaukee, Wisconsin, USA.\"\n    },\n    \"duration\": 127.0,\n    \"numberOfComments\": 0,\n    \"numberOfSeasons\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost/tvshow-service/api/v1/tvshows/3"
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteTvShow",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost/tvshow-service/api/v1/tvshows/3"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.collectionVariables.set(\"access_token\", jsonData.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"user1\",\n    \"password\": \"user1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost/user-service/oauth/authenticate"
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllComments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost/comment-service/comments"
+			},
+			"response": []
+		},
+		{
+			"name": "GetCommentById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost/comment-service/comments/1"
+			},
+			"response": []
+		},
+		{
+			"name": "AddComment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"comment\": \"Special movie!!\",\n\t\"dateTime\": \"2022-11-21T00:00:00\",\n\t\"userId\": 1,\n\t\"motionPictureId\": 2,\n\t\"motionPictureType\": \"MOVIE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost/comment-service/comments"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateCommentById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"comment\": \"Very special movie\",\n\t\"dateTime\": \"2022-11-10T00:00:00\",\n\t\"userId\": 1,\n\t\"motionPictureId\": 2,\n\t\"motionPictureType\": \"tvshow\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost/comment-service/comments/1"
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCommentById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost/comment-service/comments/4"
+			},
+			"response": []
+		},
+		{
+			"name": "GetCommentsByMovieId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost/comment-service/comments/movies/2"
+			},
+			"response": []
+		},
+		{
+			"name": "GetCommentsByTvshowId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost/comment-service/comments/tvshows/1"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.collectionVariables.set(\"access_token\", jsonData.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"user1\",\n    \"password\": \"user1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost/user-service/oauth/authenticate"
+			},
+			"response": []
+		},
+		{
+			"name": "save rating",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{access_token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"motionPictureId\": 1,\n    \"motionPictureType\": \"MOVIE\",\n    \"userId\": 1,\n    \"rating\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost/rating-service/ratings"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "access_token",
+			"value": ""
+		},
+		{
+			"key": "user1id",
+			"value": ""
+		}
+	]
+}
