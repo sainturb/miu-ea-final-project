@@ -161,9 +161,9 @@ Your project must have
     * ✅ duration.
 * ✅ Users can create/remove/update comments for movies/tv series
 * ✅ Users can rate movies/tv series.
-	* Rating is between 1 and 5.
-* ⚠️ Users can add/remove movies/tv series to/from their favorite lists.
-	* Users can have multiple favorite lists.
+	* ✅ Rating is between 1 and 5.
+* ✅ Users can add/remove movies/tv series to/from their favorite lists.
+	* ✅ Users can have multiple favorite lists.
 
 #### Technical Details
 ---
